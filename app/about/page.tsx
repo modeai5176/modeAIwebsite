@@ -125,6 +125,10 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+          <div className="flex items-center space-x-3 text-text-muted justify-center mt-8">
+            <span className="font-inter font-semibold">Contact:</span>
+            <span className="font-inter">+91 70835-89845, +971 054 303 9984, +1 (780) 908-2320</span>
+          </div>
         </div>
       </section>
 

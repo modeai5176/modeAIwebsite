@@ -60,7 +60,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 70835-89845", "+1 (780) 908-2320"],
+      details: ["+91 70835-89845", "+971 054 303 9984", "+1 (780) 908-2320"],
       color: "from-blue-500 to-cyan-500",
     },
     {
