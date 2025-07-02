@@ -71,8 +71,8 @@ export default function ContactPage() {
     },
     {
       icon: MapPin,
-      title: "Address",
-      details: ["ModeAI Headquarters", "Vancouver, Canada"],
+      title: "Based In",
+      details: ["India, UAE, Canada"],
       color: "from-green-500 to-emerald-500",
     },
     {
