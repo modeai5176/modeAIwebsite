@@ -49,8 +49,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Automation for Businesses | Mode AI Vancouver",
-    template: "%s | Mode AI Vancouver"
+    default: "AI Automation for Businesses | Mode AI",
+    template: "%s | Mode AI"
   },
   description: "Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.",
   generator: "Next.js",
@@ -73,13 +73,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.mode-ai.co',
-    title: 'AI Automation for Businesses | Mode AI Vancouver',
+    title: 'AI Automation for Businesses | Mode AI',
     description: 'Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.',
     siteName: 'Mode AI',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Automation for Businesses | Mode AI Vancouver',
+    title: 'AI Automation for Businesses | Mode AI',
     description: 'Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.',
   },
   robots: {
