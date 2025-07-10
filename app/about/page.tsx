@@ -70,12 +70,12 @@ export default function AboutPage() {
       <section className="py-20 relative overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(166,134,209,0.1),transparent_70%)]"></div>
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h1 className="text-4xl md:text-7xl font-bold font-sora text-text-primary mb-8 leading-tight">
+          <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight">
             Our Story: Empowering Businesses with
             <br />
             <span className="gradient-text">Intelligent Automation</span>
           </h1>
-          <p className="text-xl text-text-muted font-inter max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed">
             About ModeAI: Pioneering the Future of Automated Business. Our journey began as Dusk AI, driven by a passion
             for leveraging artificial intelligence to solve complex business challenges. Our rebranding to ModeAI
             signifies our evolution – a commitment to actively establish and activate your business's optimal operating
@@ -90,15 +90,15 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold font-sora text-text-primary">
+              <h2 className="text-4xl md:text-5xl font-heading-bold text-text-primary">
                 From <span className="gradient-text">Dusk AI to ModeAI</span>: A New Dawn
               </h2>
-              <p className="text-lg text-text-muted font-inter leading-relaxed">
+              <p className="text-lg text-text-muted font-body-regular leading-relaxed">
                 Our journey began as Dusk AI, driven by a passion for leveraging artificial intelligence to solve
                 complex business challenges. As the landscape of AI for business rapidly evolved, we recognized the need
                 for a more focused, comprehensive, and proactive approach to business automation.
               </p>
-              <p className="text-lg text-text-muted font-inter leading-relaxed">
+              <p className="text-lg text-text-muted font-body-regular leading-relaxed">
                 Our rebranding to ModeAI signifies this evolution – a commitment to not just illuminate problems, but to
                 actively establish and activate your business's optimal operating mode through intelligent, integrated
                 solutions. ModeAI represents a new dawn in automation consultancy, where advanced AI meets practical
@@ -106,7 +106,7 @@ export default function AboutPage() {
               </p>
               <div className="flex items-center space-x-4 pt-4">
                 <Users className="text-neon-pink" size={24} />
-                <span className="text-text-primary font-semibold font-poppins">20+ Expert Team Members</span>
+                <span className="text-text-primary font-heading-medium">20+ Expert Team Members</span>
               </div>
             </div>
             <div className="relative">
@@ -126,8 +126,8 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="flex items-center space-x-3 text-text-muted justify-center mt-8">
-            <span className="font-inter font-semibold">Contact:</span>
-            <span className="font-inter">+91 70835-89845, +971 054 303 9984, +1 (780) 908-2320</span>
+            <span className="font-body-regular font-semibold">Contact:</span>
+            <span className="font-body-regular">🇮🇳 70835-89845, 🇦🇪 054 303 9984, 🇨🇦 (780) 908-2320</span>
           </div>
         </div>
       </section>
@@ -270,16 +270,16 @@ export default function AboutPage() {
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,46,197,0.08),transparent_70%)]"></div>
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold font-sora text-text-primary mb-8">
+          <h2 className="text-4xl md:text-6xl font-heading-bold text-text-primary mb-8">
             Ready to <span className="gradient-text">Transform</span> Your Business?
           </h2>
-          <p className="text-xl text-text-muted font-inter mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-text-muted font-body-regular mb-8 max-w-2xl mx-auto">
             Let's discuss how our soulful automation approach can revolutionize your operations.
           </p>
           <StarBorder
             as={Link}
             href="/contact"
-            className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg rounded-full"
+            className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg rounded-full"
             color="#A686D1"
             speed="2.5s"
           >

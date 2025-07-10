@@ -48,7 +48,7 @@ const Header = memo(function Header() {
           {/* Logo with StarBorder */}
           <Link
             href="/"
-            className="font-bold font-sora flex items-center"
+            className="font-heading-bold flex items-center"
           >
             <Image src="/logo2.png" alt="ModeAI logo" width={70} height={70} />
             <span className="text-3xl text-white px-2">ModeAI</span>
@@ -57,7 +57,7 @@ const Header = memo(function Header() {
           {/* Desktop Navigation with StarBorder */}
           <nav className="hidden custom:block">
             <StarBorder
-              className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300"
+              className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300"
               color="#29FFE3"
               speed="3s"
             >
@@ -66,7 +66,7 @@ const Header = memo(function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-white font-bold font-poppins hover:text-neon-pink transition-colors duration-300 relative group"
+                    className="text-white font-heading-semibold hover:text-neon-pink transition-colors duration-300 relative group"
                   >
                     {link.label}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
@@ -81,7 +81,7 @@ const Header = memo(function Header() {
             <StarBorder
               as={Link}
               href="/contact"
-              className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300"
+              className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300"
               color="#A686D1"
               speed="2.5s"
             >
@@ -112,7 +112,7 @@ const Header = memo(function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="px-6 py-3 text-text-primary font-semibold font-poppins hover:bg-border-gray hover:text-accent-purple transition-all duration-300"
+                    className="px-6 py-3 text-text-primary font-heading-medium hover:bg-border-gray hover:text-accent-purple transition-all duration-300"
                     onClick={closeMenu}
                   >
                     {link.label}
@@ -122,7 +122,7 @@ const Header = memo(function Header() {
                   <StarBorder
                     as={Link}
                     href="/contact"
-                    className="w-full font-bold font-poppins hover:shadow-primary-glow transition-all duration-300 block text-center"
+                    className="w-full font-heading-semibold hover:shadow-primary-glow transition-all duration-300 block text-center"
                     color="#A686D1"
                     speed="2.5s"
                     onClick={closeMenu}

@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ArrowRight } from "lucide-react"
-import SplashCursor from "../components/SplashCursor"
+
 import StarBorder from "../components/StarBorder"
 import Link from "next/link"
 import { motion, useInView, Variants } from "framer-motion"
@@ -60,7 +60,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 70835-89845", "+971 054 303 9984", "+1 (780) 908-2320"],
+      details: ["🇮🇳 +91 70835-89845", "🇦🇪 +971  (054) 303 9984", "🇨🇦 +1 (780) 908-2320"],
       color: "from-blue-500 to-cyan-500",
     },
     {
@@ -99,10 +99,10 @@ export default function ContactPage() {
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(156,77,255,0.1),transparent_70%)]"></div>
           <div className="container mx-auto px-6 text-center relative z-10">
-            <h1 className="text-4xl md:text-7xl font-bold font-sora text-text-primary mb-8 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight">
               Get In <span className="gradient-text">Touch</span>
             </h1>
-            <p className="text-xl text-text-muted font-inter max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed">
               Ready to transform your business with soulful automation? Let's discuss how our AI solutions can drive
               growth and efficiency for your organization.
             </p>
@@ -116,11 +116,11 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
               <div className="glass-card-strong border border-white/10 rounded-2xl p-8">
-                <h2 className="text-3xl font-bold font-sora text-text-primary mb-6">Send Us a Message</h2>
+                <h2 className="text-3xl font-heading-bold text-text-primary mb-6">Send Us a Message</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-text-primary font-semibold font-poppins mb-2">
+                      <label htmlFor="name" className="block text-text-primary font-heading-medium mb-2">
                         Full Name *
                       </label>
                       <input
@@ -130,11 +130,11 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-inter focus:outline-none focus:border-accent-purple transition-colors duration-300"
+                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-text-primary font-semibold font-poppins mb-2">
+                      <label htmlFor="email" className="block text-text-primary font-heading-medium mb-2">
                         Email Address *
                       </label>
                       <input
@@ -144,14 +144,14 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-inter focus:outline-none focus:border-accent-purple transition-colors duration-300"
+                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="company" className="block text-text-primary font-semibold font-poppins mb-2">
+                      <label htmlFor="company" className="block text-text-primary font-heading-medium mb-2">
                         Company Name
                       </label>
                       <input
@@ -160,11 +160,11 @@ export default function ContactPage() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-inter focus:outline-none focus:border-accent-purple transition-colors duration-300"
+                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-text-primary font-semibold font-poppins mb-2">
+                      <label htmlFor="phone" className="block text-text-primary font-heading-medium mb-2">
                         Phone Number
                       </label>
                       <input
@@ -173,13 +173,13 @@ export default function ContactPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-inter focus:outline-none focus:border-accent-purple transition-colors duration-300"
+                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-text-primary font-semibold font-poppins mb-2">
+                    <label htmlFor="service" className="block text-text-primary font-heading-medium mb-2">
                       Service of Interest
                     </label>
                     <select
@@ -187,7 +187,7 @@ export default function ContactPage() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-inter focus:outline-none focus:border-accent-purple transition-colors duration-300"
+                      className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, index) => (
@@ -199,7 +199,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-text-primary font-semibold font-poppins mb-2">
+                    <label htmlFor="message" className="block text-text-primary font-heading-medium mb-2">
                       Message *
                     </label>
                     <textarea
@@ -209,7 +209,7 @@ export default function ContactPage() {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-inter focus:outline-none focus:border-accent-purple transition-colors duration-300 resize-vertical"
+                      className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300 resize-vertical"
                     />
                   </div>
 
@@ -218,7 +218,7 @@ export default function ContactPage() {
                     as="button"
                     type="submit"
                     disabled={isSubmitted}
-                      className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg whitespace-nowrap px-8 py-4 disabled:opacity-60"
+                      className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg whitespace-nowrap px-8 py-4 disabled:opacity-60"
                     color="#A686D1"
                     speed="2.5s"
                   >
@@ -241,8 +241,8 @@ export default function ContactPage() {
               {/* Contact Information */}
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-3xl font-bold font-sora text-text-primary mb-6">Contact Information</h2>
-                  <p className="text-text-muted font-inter leading-relaxed mb-8">
+                  <h2 className="text-3xl font-heading-bold text-text-primary mb-6">Contact Information</h2>
+                  <p className="text-text-muted font-body-regular leading-relaxed mb-8">
                     We're here to help you transform your business with AI. Reach out to us through any of the channels
                     below, and our team will get back to you within 24 hours.
                   </p>
@@ -259,10 +259,10 @@ export default function ContactPage() {
                       >
                         <info.icon size={24} className="text-white" />
                       </div>
-                      <h3 className="text-xl font-bold font-poppins text-text-primary mb-3">{info.title}</h3>
+                      <h3 className="text-xl font-heading-semibold text-text-primary mb-3">{info.title}</h3>
                       <div className="space-y-1">
                         {info.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-text-muted font-inter">
+                          <p key={detailIndex} className="text-text-muted font-body-regular">
                             {detail}
                           </p>
                         ))}
@@ -280,10 +280,10 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,46,197,0.03),transparent_70%)]"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-sora text-text-primary mb-6">
+              <h2 className="text-4xl md:text-5xl font-heading-bold text-text-primary mb-6">
                 Frequently Asked <span className="gradient-text">Questions</span>
               </h2>
-              <p className="text-lg text-text-muted font-inter max-w-2xl mx-auto">
+              <p className="text-lg text-text-muted font-body-regular max-w-2xl mx-auto">
                 Quick answers to common questions about our services and process.
               </p>
             </div>
@@ -320,8 +320,8 @@ export default function ContactPage() {
                   key={index}
                   className="glass-card-strong border border-white/10 rounded-2xl p-6 hover:shadow-card-glow transition-all duration-300"
                 >
-                  <h3 className="text-xl font-bold font-poppins text-text-primary mb-3">{faq.question}</h3>
-                  <p className="text-text-muted font-inter leading-relaxed">{faq.answer}</p>
+                  <h3 className="text-xl font-heading-semibold text-text-primary mb-3">{faq.question}</h3>
+                  <p className="text-text-muted font-body-regular leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -332,24 +332,24 @@ export default function ContactPage() {
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(156,77,255,0.15),transparent_70%)]"></div>
           <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold font-sora text-text-primary mb-8">
+            <h2 className="text-4xl md:text-6xl font-heading-bold text-text-primary mb-8">
               Ready to <span className="gradient-text">Get Started</span>?
             </h2>
-            <p className="text-xl text-text-muted font-inter mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-text-muted font-body-regular mb-8 max-w-2xl mx-auto">
               Schedule a free consultation to discuss your AI automation needs and discover how we can help transform
               your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+9170835-89845"
-                className="metallic-fluid-btn bg-gradient-purple text-white px-10 py-5 rounded-full font-bold font-poppins hover:shadow-purple-glow transition-all duration-300 glow-effect inline-flex items-center text-lg"
+                href="tel:+917083589845"
+                className="metallic-fluid-btn bg-gradient-purple text-white px-10 py-5 rounded-full font-heading-semibold hover:shadow-purple-glow transition-all duration-300 glow-effect inline-flex items-center text-lg"
               >
                 <Phone className="mr-3" size={24} />
                 Call Now
               </a>
               <a
                 href="mailto:admin@mode-ai.co"
-                className="border border-accent-purple text-accent-purple px-10 py-5 rounded-full font-bold font-poppins hover:bg-accent-purple hover:text-white transition-all duration-300 inline-flex items-center text-lg"
+                className="border border-accent-purple text-accent-purple px-10 py-5 rounded-full font-heading-semibold hover:bg-accent-purple hover:text-white transition-all duration-300 inline-flex items-center text-lg"
               >
                 <Mail className="mr-3" size={24} />
                 Email Us

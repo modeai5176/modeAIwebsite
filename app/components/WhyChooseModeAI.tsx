@@ -65,11 +65,11 @@ const WhyChooseModeAI = React.memo(function WhyChooseModeAI() {
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         <h2
           id="why-choose-modeai-heading"
-          className="text-center text-4xl md:text-5xl font-extrabold font-sans text-white tracking-tight"
+          className="text-center text-4xl md:text-5xl font-heading-bold text-white tracking-tight"
         >
           Why Choose <span className="bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400 bg-clip-text text-transparent">ModeAI</span>?
         </h2>
-        <p className="max-w-2xl mx-auto mt-4 text-center text-lg text-neutral-300 font-sans">
+        <p className="max-w-2xl mx-auto mt-4 text-center text-lg text-neutral-300 font-body-regular">
           Discover how ModeAI's AI automation for business delivers intelligent operations, automated workflows, and productivity software for business. Cut operational costs with AI and scale your startup with AI-powered solutions designed for modern enterprises.
         </p>
         <motion.div
@@ -88,10 +88,10 @@ const WhyChooseModeAI = React.memo(function WhyChooseModeAI() {
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-500 to-cyan-400 text-white text-2xl shadow-lg mb-4 transition-all duration-200 group-hover:shadow-pink-400/60 group-hover:shadow-lg group-hover:scale-110">
                 {feature.icon && <feature.icon size={28} />}
               </div>
-              <h3 className="mt-2 text-xl font-semibold text-white text-center font-sans">
+              <h3 className="mt-2 text-xl font-heading-semibold text-white text-center">
                 {feature.title}
               </h3>
-              <p className="mt-2 text-sm text-neutral-300 leading-relaxed text-center font-sans">
+              <p className="mt-2 text-sm text-neutral-300 leading-relaxed text-center font-body-regular">
                 {feature.desc}
               </p>
             </motion.article>

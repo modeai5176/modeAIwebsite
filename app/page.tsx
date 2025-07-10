@@ -143,7 +143,7 @@ const HomePage = memo(function HomePage() {
           >
             {/* Main Heading */}
             <div className="flex justify-center items-center mb-12">
-              <SpotlightText className="text-4xl md:text-7xl font-bold font-sora leading-tight text-white max-w-5xl text-center">
+              <SpotlightText className="text-4xl md:text-7xl font-bold leading-tight text-white max-w-5xl text-center font-heading-bold">
                 Where Every Mode
                 <br />
                 is Magic
@@ -155,7 +155,7 @@ const HomePage = memo(function HomePage() {
               <StarBorder
                 as={Link}
                 href="/contact"
-                className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg whitespace-nowrap"
+                className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg whitespace-nowrap"
               >
                 Start Your Journey
                 <ArrowRight className="ml-2" size={20} />
@@ -170,10 +170,10 @@ const HomePage = memo(function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(166,134,209,0.05),transparent_70%)]"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-sora text-text-primary mb-8">
+            <h2 className="text-4xl md:text-5xl font-heading-bold text-text-primary mb-8">
               Our <span className="gradient-text">Services</span>
             </h2>
-            <p className="text-lg text-text-muted font-inter max-w-2xl mx-auto mb-12">
+            <p className="text-lg text-text-muted font-body-regular max-w-2xl mx-auto mb-12">
               Comprehensive AI solutions designed to transform your business operations and unlock new possibilities.
             </p>
           </div>
@@ -194,8 +194,8 @@ const HomePage = memo(function HomePage() {
                 >
                   <service.icon size={32} className="text-white" />
                 </div>
-                <h3 className="text-2xl font-bold font-poppins text-text-primary mb-4">{service.title}</h3>
-                <p className="text-text-muted font-inter leading-relaxed">{service.description}</p>
+                <h3 className="text-2xl font-heading-semibold text-text-primary mb-4">{service.title}</h3>
+                <p className="text-text-muted font-body-regular leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -204,7 +204,7 @@ const HomePage = memo(function HomePage() {
             <StarBorder
               as={Link}
               href="/services"
-              className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300 inline-flex items-center"
+              className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center"
             >
               Explore All Services
               <ArrowRight className="ml-2" size={20} />
@@ -220,10 +220,10 @@ const HomePage = memo(function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(166,134,209,0.05),transparent_70%)]"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-sora text-text-primary mb-8">
+            <h2 className="text-4xl md:text-5xl font-heading-bold text-text-primary mb-8">
               Latest <span className="gradient-text">Insights</span>
             </h2>
-            <p className="text-lg text-text-muted font-inter max-w-2xl mx-auto mb-12">
+            <p className="text-lg text-text-muted font-body-regular max-w-2xl mx-auto mb-12">
               Stay ahead with our latest thoughts on AI, automation, and digital transformation trends.
             </p>
           </div>
@@ -312,16 +312,16 @@ const HomePage = memo(function HomePage() {
       {/* Quote Section */}
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold font-sora text-text-primary mb-8">
+          <h2 className="text-4xl md:text-6xl font-heading-bold text-text-primary mb-8">
             Ready to <span className="gradient-text">Automate</span> Your Business?
           </h2>
-          <p className="text-xl text-text-muted font-inter mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-text-muted font-body-regular mb-8 max-w-2xl mx-auto">
             Join the future of business automation with AI solutions that understand your unique needs.
           </p>
           <StarBorder
             as={Link}
             href="/contact"
-            className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg"
+            className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg"
           >
             Schedule Your Consultation
             <ArrowRight className="ml-3" size={24} />

@@ -41,38 +41,42 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-3xl font-bold font-sora gradient-text mb-4 block">
+            <Link href="/" className="text-3xl font-heading-bold gradient-text mb-4 block">
               ModeAI
             </Link>
-            <p className="text-text-muted font-inter mb-6 max-w-md">
+            <p className="text-text-muted font-body-regular mb-6 max-w-md">
               Next-generation AI agents and intelligent business automation with human-centric design. We create soulful
               automation that empowers people and transforms businesses.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-text-muted">
-                <Phone size={18} className="text-accent-purple" />
-                <span className="font-inter">+91 70835-89845, +971 054 303 9984, +1 (780) 908-2320</span>
+              <div className="flex items-start space-x-3 text-text-muted">
+                <Phone size={18} className="text-accent-purple mt-1" />
+                <div className="flex flex-col space-y-1">
+                  <span className="font-body-regular">🇮🇳 +91 70835-89845</span>
+                  <span className="font-body-regular">🇦🇪 +971  (054) 303 9984</span>
+                  <span className="font-body-regular">🇨🇦 +1 (780) 908-2320</span>
+                </div>
               </div>
               <div className="flex items-center space-x-3 text-text-muted">
                 <Mail size={18} className="text-accent-purple" />
-                <span className="font-inter">admin@mode-ai.co</span>
+                <span className="font-body-regular">admin@mode-ai.co</span>
               </div>
               <div className="flex items-center space-x-3 text-text-muted">
                 <MapPin size={18} className="text-accent-purple" />
-                <span className="font-inter">India, UAE, Canada</span>
+                <span className="font-body-regular">India, UAE, Canada</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold font-poppins text-text-primary mb-4">Quick Links</h3>
+            <h3 className="text-xl font-heading-medium text-text-primary mb-4">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-text-muted hover:text-accent-purple transition-colors duration-300 font-inter"
+                    className="text-text-muted hover:text-accent-purple transition-colors duration-300 font-body-regular"
                   >
                     {link.label}
                   </Link>
@@ -83,7 +87,7 @@ export default function Footer() {
 
           {/* Social Media */}
           <div>
-            <h3 className="text-xl font-semibold font-poppins text-text-primary mb-4">Follow Us</h3>
+            <h3 className="text-xl font-heading-medium text-text-primary mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <Link
@@ -104,7 +108,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-border-gray mt-8 pt-8 text-center">
-          <p className="text-text-muted font-inter">© 2025 ModeAI. All rights reserved.</p>
+          <p className="text-text-muted font-body-regular">© 2025 ModeAI. All rights reserved.</p>
         </div>
       </div>
     </footer>
