@@ -188,8 +188,11 @@ export default function HiddenPortfolioPage() {
                         
                         {/* Status Badge */}
                         <div className="absolute top-4 left-4 z-10">
-                          <span className="px-4 py-2 bg-black text-white text-xs font-bold rounded-full backdrop-blur-sm shadow-lg border border-white/20">
-                            {project.status || "LIVE CLIENT"}
+                          <span className="px-4 py-2 bg-black text-white text-xs font-bold rounded-full backdrop-blur-sm shadow-lg border border-white/20 flex items-center gap-2">
+                            {project.status === "Ongoing Project" && (
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            )}
+                            {project.status || "Live Client"}
                           </span>
                         </div>
 
@@ -276,8 +279,11 @@ export default function HiddenPortfolioPage() {
                       
                       {/* Status Badge */}
                       <div className="absolute top-4 left-4 z-10">
-                        <span className="px-4 py-2 bg-black text-white text-xs font-bold rounded-full backdrop-blur-sm shadow-lg border border-white/20">
-                          {project.status || "LIVE CLIENT"}
+                        <span className="px-4 py-2 bg-black text-white text-xs font-bold rounded-full backdrop-blur-sm shadow-lg border border-white/20 flex items-center gap-2">
+                          {project.status === "Ongoing Project" && (
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                          )}
+                          {project.status || "Live Client"}
                         </span>
                       </div>
 
@@ -295,18 +301,18 @@ export default function HiddenPortfolioPage() {
                     {/* Project Content */}
                     <div className="p-6">
                       {/* Project Title */}
-                      <h3 className="text-xl font-bold font-poppins text-text-primary mb-3 group-hover:text-accent-purple transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-accent-purple transition-colors duration-300" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                         {project.title}
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-text-muted font-inter text-sm leading-relaxed mb-6">
+                      <p className="text-text-muted text-sm leading-relaxed mb-6" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
                         {project.description}
                       </p>
 
                       {/* Key Highlights */}
                       <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-text-primary mb-3 flex items-center gap-2">
+                        <h4 className="text-sm font-semibold text-text-primary mb-3 flex items-center gap-2" style={{fontFamily: 'var(--font-heading)', fontWeight: 500}}>
                           <Target size={14} className="text-accent-purple" />
                           Key Achievements
                         </h4>
@@ -393,7 +399,7 @@ export default function HiddenPortfolioPage() {
                         {/* Sample Badge */}
                         <div className="absolute top-4 left-4 z-10">
                           <span className="px-4 py-2 bg-black text-white text-xs font-bold rounded-full backdrop-blur-sm shadow-lg border border-white/20">
-                            DEMO PROJECT
+                            Demo Project
                           </span>
                         </div>
 
@@ -481,7 +487,7 @@ export default function HiddenPortfolioPage() {
                       {/* Sample Badge */}
                       <div className="absolute top-4 left-4 z-10">
                         <span className="px-4 py-2 bg-black text-white text-xs font-bold rounded-full backdrop-blur-sm shadow-lg border border-white/20">
-                          DEMO PROJECT
+                          Demo Project
                         </span>
                       </div>
 

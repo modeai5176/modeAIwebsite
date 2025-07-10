@@ -52,7 +52,7 @@ export default function Footer() {
               <div className="flex items-start space-x-3 text-text-muted">
                 <Phone size={18} className="text-accent-purple mt-1" />
                 <div className="flex flex-col space-y-1">
-                  <span className="font-body-regular">🇮🇳 +91 70835-89845</span>
+                  <span className="font-body-regular">🇮🇳 +91 8700117495, +91 70835-89845</span>
                   <span className="font-body-regular">🇦🇪 +971  (054) 303 9984</span>
                   <span className="font-body-regular">🇨🇦 +1 (780) 908-2320</span>
                 </div>
