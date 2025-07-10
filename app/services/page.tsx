@@ -179,10 +179,10 @@ export default function ServicesPage() {
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(156,77,255,0.1),transparent_70%)]"></div>
           <div className="container mx-auto px-6 text-center relative z-10">
-            <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight" style={{fontFamily: 'var(--font-heading)', fontWeight: 700}}>
               Our <span className="gradient-text">Services</span>
             </h1>
-            <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
               Comprehensive AI solutions designed to transform your business operations and unlock new possibilities.
               From custom AI agents to complete digital transformation, we've got you covered.
             </p>
@@ -204,11 +204,11 @@ export default function ServicesPage() {
                   >
                     <service.icon size={32} className="text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold font-poppins text-text-primary mb-4">{service.title}</h3>
-                  <p className="text-text-muted font-inter mb-6 leading-relaxed">{service.description}</p>
+                  <h3 className="text-2xl font-bold text-text-primary mb-4" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>{service.title}</h3>
+                  <p className="text-text-muted mb-6 leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>{service.description}</p>
                   <ul className="space-y-3">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-text-muted font-inter">
+                      <li key={featureIndex} className="flex items-center text-text-muted" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
                         <CheckCircle size={16} className="text-accent-purple mr-3 flex-shrink-0" />
                         {feature}
                       </li>
@@ -225,10 +225,10 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,46,197,0.03),transparent_70%)]"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-sora text-text-primary mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                 Our <span className="gradient-text">Process</span>
               </h2>
-              <p className="text-lg text-text-muted font-inter max-w-2xl mx-auto">
+              <p className="text-lg text-text-muted max-w-2xl mx-auto" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
                 A proven methodology that ensures successful AI implementation and maximum business impact.
               </p>
             </div>
@@ -237,10 +237,10 @@ export default function ServicesPage() {
               {process.map((step, index) => (
                 <div key={index} className="text-center group">
                   <div className="bg-gradient-purple w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-white font-bold font-poppins text-lg">{step.step}</span>
+                    <span className="text-white font-bold text-lg" style={{fontFamily: 'var(--font-heading)', fontWeight: 700}}>{step.step}</span>
                   </div>
-                  <h3 className="text-xl font-bold font-poppins text-text-primary mb-4">{step.title}</h3>
-                  <p className="text-text-muted font-inter leading-relaxed">{step.description}</p>
+                  <h3 className="text-xl font-bold text-text-primary mb-4" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>{step.title}</h3>
+                  <p className="text-text-muted leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>{step.description}</p>
                 </div>
               ))}
             </div>

@@ -91,10 +91,10 @@ export default function BlogPage() {
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(156,77,255,0.1),transparent_70%)]"></div>
           <div className="container mx-auto px-6 text-center relative z-10">
-            <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight" style={{fontFamily: 'var(--font-heading)', fontWeight: 700}}>
               Our <span className="gradient-text">Blog</span>
             </h1>
-            <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
               Insights, tutorials, and thought leadership on AI, automation, and the future of business technology. Stay
               updated with the latest trends and best practices in soulful automation.
             </p>
@@ -106,7 +106,7 @@ export default function BlogPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(166,134,209,0.05),transparent_70%)]"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="mb-12">
-              <h2 className="text-3xl font-bold font-sora text-text-primary mb-2">Featured Article</h2>
+              <h2 className="text-3xl font-bold text-text-primary mb-2" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>Featured Article</h2>
               <div className="w-20 h-1 bg-gradient-purple rounded"></div>
             </div>
 
@@ -123,17 +123,17 @@ export default function BlogPage() {
                     quality={90}
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-gradient-purple text-white px-3 py-1 rounded-full text-sm font-semibold font-poppins">
+                    <span className="bg-gradient-purple text-white px-3 py-1 rounded-full text-sm font-semibold" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                       {featuredPost.category}
                     </span>
                   </div>
                 </div>
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <h3 className="text-3xl font-bold font-sora text-text-primary mb-4 leading-tight">
+                  <h3 className="text-3xl font-bold text-text-primary mb-4 leading-tight" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                     {featuredPost.title}
                   </h3>
-                  <p className="text-text-muted font-inter mb-6 leading-relaxed">{featuredPost.excerpt}</p>
-                  <div className="flex items-center text-text-muted font-inter text-sm mb-6 space-x-6">
+                  <p className="text-text-muted mb-6 leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>{featuredPost.excerpt}</p>
+                  <div className="flex items-center text-text-muted text-sm mb-6 space-x-6" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
                     <div className="flex items-center">
                       <User size={16} className="mr-2" />
                       {featuredPost.author}
@@ -149,7 +149,8 @@ export default function BlogPage() {
                   </div>
                   <Link
                     href={`/blog/${featuredPost.id}`}
-                    className="inline-flex items-center text-accent-purple font-semibold font-poppins hover:text-accent-hover transition-colors duration-300"
+                    className="inline-flex items-center text-accent-purple font-semibold hover:text-accent-hover transition-colors duration-300"
+                    style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}
                   >
                     Read Full Article
                     <ArrowRight className="ml-2" size={20} />
@@ -168,11 +169,12 @@ export default function BlogPage() {
               {categories.map((category, index) => (
                 <button
                   key={index}
-                  className={`px-6 py-3 rounded-full font-semibold font-poppins transition-all duration-300 ${
+                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                     index === 0
                       ? "bg-gradient-purple text-white shadow-purple-glow"
                       : "bg-primary-bg text-text-muted hover:text-text-primary hover:bg-border-gray"
                   }`}
+                  style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}
                 >
                   {category}
                 </button>
@@ -201,17 +203,17 @@ export default function BlogPage() {
                       quality={90}
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-gradient-purple text-white px-3 py-1 rounded-full text-sm font-semibold font-poppins">
+                      <span className="bg-gradient-purple text-white px-3 py-1 rounded-full text-sm font-semibold" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                         {post.category}
                       </span>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold font-sora text-text-primary mb-3 leading-tight group-hover:text-accent-purple transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-text-primary mb-3 leading-tight group-hover:text-accent-purple transition-colors duration-300" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                       {post.title}
                     </h3>
-                    <p className="text-text-muted font-inter mb-4 leading-relaxed">{post.excerpt}</p>
-                    <div className="flex items-center text-text-muted font-inter text-sm mb-4 space-x-4">
+                    <p className="text-text-muted mb-4 leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>{post.excerpt}</p>
+                    <div className="flex items-center text-text-muted text-sm mb-4 space-x-4" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
                       <div className="flex items-center">
                         <User size={14} className="mr-1" />
                         {post.author}
@@ -222,13 +224,14 @@ export default function BlogPage() {
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center text-text-muted font-inter text-sm">
+                      <div className="flex items-center text-text-muted text-sm" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
                         <Clock size={14} className="mr-1" />
                         {post.readTime}
                       </div>
                       <Link
                         href={`/blog/${post.id}`}
-                        className="text-accent-purple font-semibold font-poppins hover:text-accent-hover transition-colors duration-300"
+                        className="text-accent-purple font-semibold hover:text-accent-hover transition-colors duration-300"
+                        style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}
                       >
                         Read More
                       </Link>
@@ -240,7 +243,7 @@ export default function BlogPage() {
 
             {/* Load More Button */}
             <div className="text-center mt-12">
-              <button className="bg-gradient-purple text-white px-8 py-4 rounded-full font-bold font-poppins hover:shadow-purple-glow transition-all duration-300 glow-effect">
+              <button className="bg-gradient-purple text-white px-8 py-4 rounded-full font-bold hover:shadow-purple-glow transition-all duration-300 glow-effect" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                 Load More Articles
               </button>
             </div>

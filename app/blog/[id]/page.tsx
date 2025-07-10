@@ -199,11 +199,12 @@ export default function BlogPost() {
     return (
       <div className="bg-gradient-to-b from-primary-bg via-primary-secondary to-primary-bg min-h-screen pt-20">
         <div className="container mx-auto px-6 py-20 text-center">
-          <h1 className="text-4xl font-bold font-sora text-text-primary mb-4">Post Not Found</h1>
-          <p className="text-text-muted mb-8">The blog post you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold text-text-primary mb-4" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>Post Not Found</h1>
+          <p className="text-text-muted mb-8" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>The blog post you're looking for doesn't exist.</p>
           <Link
             href="/blog"
-            className="inline-flex items-center bg-gradient-purple text-white px-6 py-3 rounded-full font-bold font-poppins hover:shadow-purple-glow transition-all duration-300"
+            className="inline-flex items-center bg-gradient-purple text-white px-6 py-3 rounded-full font-bold hover:shadow-purple-glow transition-all duration-300"
+            style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}
           >
             <ArrowLeft className="mr-2" size={20} />
             Back to Blog
@@ -224,7 +225,8 @@ export default function BlogPost() {
               {/* Back to Blog */}
               <Link
                 href="/blog"
-                className="inline-flex items-center text-accent-purple font-semibold font-poppins hover:text-accent-hover transition-colors duration-300 mb-8"
+                className="inline-flex items-center text-accent-purple font-semibold hover:text-accent-hover transition-colors duration-300 mb-8"
+                style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}
               >
                 <ArrowLeft className="mr-2" size={20} />
                 Back to Blog
@@ -232,18 +234,18 @@ export default function BlogPost() {
 
               {/* Category Badge */}
               <div className="mb-6">
-                <span className="bg-gradient-purple text-white px-4 py-2 rounded-full text-sm font-semibold font-poppins">
+                <span className="bg-gradient-purple text-white px-4 py-2 rounded-full text-sm font-semibold" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
                   {post.category}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-6xl font-bold font-sora text-text-primary mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-6 leading-tight" style={{fontFamily: 'var(--font-heading)', fontWeight: 700}}>
                 {post.title}
               </h1>
 
               {/* Meta Information */}
-              <div className="flex items-center text-text-muted font-inter text-sm mb-8 space-x-6">
+              <div className="flex items-center text-text-muted text-sm mb-8 space-x-6" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
                 <div className="flex items-center">
                   <User size={16} className="mr-2" />
                   {post.author}
