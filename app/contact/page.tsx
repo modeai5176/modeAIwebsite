@@ -84,12 +84,15 @@ export default function ContactPage() {
   ]
 
   const services = [
-    "Custom AI Agents",
-    "Business Process Automation",
-    "Data Intelligence Solutions",
-    "AI Security & Compliance",
-    "Digital Transformation",
-    "AI Consulting & Strategy",
+    "Website Development",
+    "Business Process Automation (BPA)",
+    "CRM Automation",
+    "AI Workflows & Custom AI Development",
+    "Custom API Integrations",
+    "AI Agents",
+    "Website Automation",
+    "Digital Marketing and SEO",
+    "Automated Email Marketing and SMS Marketing",
   ]
 
   return (
