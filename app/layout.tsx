@@ -2,8 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, Poppins, Space_Grotesk, Sora, Open_Sans } from "next/font/google"
 import "./globals.css"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
+import ConditionalLayout from "./components/ConditionalLayout"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -173,9 +172,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} ${spaceGrotesk.variable} ${sora.variable} ${openSans.variable} bg-primary-bg text-text-primary antialiased h-full m-0 p-0`}
       >
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   )

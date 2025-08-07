@@ -125,6 +125,9 @@ const HomePage = memo(function HomePage() {
 
   return (
     <div className="bg-gradient-to-b from-primary-bg via-primary-secondary to-primary-bg">
+      {/* Vapi Voice Demo */}
+     
+      
       {/* Hero Section */}
       <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">

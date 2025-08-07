@@ -1,36 +1,51 @@
-import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST(req: NextRequest) {
-  const data = await req.json();
-  const { name, email, company, phone, service, message } = data;
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'as.srivastava100@gmail.com',
-      pass: 'coqf gymx wpkc alku',
-    },
-  });
-
-  const mailOptions = {
-    from: 'as.srivastava100@gmail.com',
-    to: 'as.srivastava100@gmail.com',
-    subject: `New Contact Form Submission from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nPhone: ${phone}\nService: ${service}\nMessage: ${message}`,
-    html: `<h2>New Contact Form Submission</h2>
-      <p><b>Name:</b> ${name}</p>
-      <p><b>Email:</b> ${email}</p>
-      <p><b>Company:</b> ${company}</p>
-      <p><b>Phone:</b> ${phone}</p>
-      <p><b>Service:</b> ${service}</p>
-      <p><b>Message:</b><br/>${message}</p>`
-  };
-
+export async function POST(request: NextRequest) {
   try {
-    await transporter.sendMail(mailOptions);
-    return NextResponse.json({ success: true });
+    const body = await request.json()
+    const { name, email, phone, company, businessType, message } = body
+
+    // Validate required fields
+    if (!name || !email || !businessType) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      )
+    }
+
+    // Here you would typically:
+    // 1. Send email notification
+    // 2. Store in CRM (HubSpot, Salesforce, etc.)
+    // 3. Create calendar booking
+    // 4. Send confirmation email
+    
+    // For now, we'll just log the submission
+    console.log('Contact form submission:', {
+      name,
+      email,
+      phone,
+      company,
+      businessType,
+      message,
+      timestamp: new Date().toISOString(),
+      source: 'ai-caller-landing'
+    })
+
+    // Simulate processing time
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    return NextResponse.json(
+      { 
+        success: true, 
+        message: 'Thank you! We will contact you within 24 hours to schedule your free AI strategy call.' 
+      },
+      { status: 200 }
+    )
   } catch (error) {
-    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
+    console.error('Contact form error:', error)
+    return NextResponse.json(
+      { error: 'Something went wrong. Please try again.' },
+      { status: 500 }
+    )
   }
 } 
