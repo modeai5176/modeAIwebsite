@@ -15,19 +15,29 @@ export default function ContactPage() {
     name: "",
     email: "",
     company: "",
+    phoneCode: "+1",
     phone: "",
     service: "",
     message: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: `${formData.phoneCode}${formData.phone}`.replace(/\s+/g, ''),
+          company: formData.company,
+          service: formData.service,
+          message: formData.message,
+        }),
       })
       const result = await res.json()
       if (result.success) {
@@ -36,6 +46,7 @@ export default function ContactPage() {
           name: "",
           email: "",
           company: "",
+          phoneCode: "+1",
           phone: "",
           service: "",
           message: "",
@@ -46,6 +57,8 @@ export default function ContactPage() {
       }
     } catch (error) {
       alert('Failed to send message: ' + (error instanceof Error ? error.message : 'Unknown error'))
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -163,21 +176,68 @@ export default function ContactPage() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
+                        required
                         className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-text-primary font-heading-medium mb-2">
+                      <label className="block text-text-primary font-heading-medium mb-2">
                         Phone Number
                       </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
-                      />
+                      <div className="w-full bg-primary-bg border border-border-gray rounded-xl text-text-primary focus-within:border-accent-purple transition-colors duration-300 flex items-center">
+                        <select
+                          id="phoneCode"
+                          name="phoneCode"
+                          value={formData.phoneCode}
+                          onChange={handleChange}
+                          className="bg-transparent pl-1 pr-1 py-3 outline-none w-[3rem] md:w-[4.25rem] lg:w-[4.85rem] shrink-0 text-sm"
+                        >
+                          <option value="+1">🇺🇸 +1</option>
+                          <option value="+91">🇮🇳 +91</option>
+                          <option value="+971">🇦🇪 +971</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+61">🇦🇺 +61</option>
+                          <option value="+65">🇸🇬 +65</option>
+                          <option value="+81">🇯🇵 +81</option>
+                          <option value="+86">🇨🇳 +86</option>
+                          <option value="+49">🇩🇪 +49</option>
+                          <option value="+33">🇫🇷 +33</option>
+                          <option value="+39">🇮🇹 +39</option>
+                          <option value="+34">🇪🇸 +34</option>
+                          <option value="+7">🇷🇺 +7</option>
+                          <option value="+55">🇧🇷 +55</option>
+                          <option value="+52">🇲🇽 +52</option>
+                          <option value="+27">🇿🇦 +27</option>
+                          <option value="+64">🇳🇿 +64</option>
+                          <option value="+353">🇮🇪 +353</option>
+                          <option value="+351">🇵🇹 +351</option>
+                          <option value="+31">🇳🇱 +31</option>
+                          <option value="+41">🇨🇭 +41</option>
+                          <option value="+46">🇸🇪 +46</option>
+                          <option value="+47">🇳🇴 +47</option>
+                          <option value="+358">🇫🇮 +358</option>
+                          <option value="+90">🇹🇷 +90</option>
+                          <option value="+966">🇸🇦 +966</option>
+                          <option value="+974">🇶🇦 +974</option>
+                          <option value="+965">🇰🇼 +965</option>
+                          <option value="+968">🇴🇲 +968</option>
+                          <option value="+20">🇪🇬 +20</option>
+                          <option value="+254">🇰🇪 +254</option>
+                          <option value="+233">🇬🇭 +233</option>
+                          <option value="+234">🇳🇬 +234</option>
+                        </select>
+                        <div className="h-6 border-l border-border-gray mx-0.5" />
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          required
+                          className="flex-1 bg-transparent px-3 py-3 outline-none placeholder-text-muted"
+                          placeholder="(555) 123-4567"
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -190,6 +250,7 @@ export default function ContactPage() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
                     >
                       <option value="">Select a service</option>
@@ -200,6 +261,8 @@ export default function ContactPage() {
                       ))}
                     </select>
                   </div>
+
+                  
 
                   <div>
                     <label htmlFor="message" className="block text-text-primary font-heading-medium mb-2">
@@ -220,12 +283,17 @@ export default function ContactPage() {
                   <StarBorder
                     as="button"
                     type="submit"
-                    disabled={isSubmitted}
+                    disabled={isSubmitted || isSubmitting}
                       className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg whitespace-nowrap px-8 py-4 disabled:opacity-60"
                     color="#A686D1"
                     speed="2.5s"
                   >
-                    {isSubmitted ? (
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : isSubmitted ? (
                       <>
                         <CheckCircle className="mr-2" size={20} />
                         Message Sent!

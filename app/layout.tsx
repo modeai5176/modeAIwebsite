@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Poppins, Space_Grotesk, Sora, Open_Sans } from "next/font/google"
+import { Inter, Poppins, Space_Grotesk, Sora, Open_Sans, DM_Sans } from "next/font/google"
 import "./globals.css"
 import ConditionalLayout from "./components/ConditionalLayout"
 
@@ -35,6 +35,12 @@ const sora = Sora({
 const openSans = Open_Sans({
   subsets: ["latin"],
   variable: "--font-open-sans",
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
   display: 'swap',
 })
 
@@ -170,7 +176,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${poppins.variable} ${spaceGrotesk.variable} ${sora.variable} ${openSans.variable} bg-primary-bg text-text-primary antialiased h-full m-0 p-0`}
+        className={`${inter.variable} ${poppins.variable} ${spaceGrotesk.variable} ${sora.variable} ${openSans.variable} ${dmSans.variable} bg-primary-bg text-text-primary antialiased h-full m-0 p-0`}
       >
         <ConditionalLayout>{children}</ConditionalLayout>
       </body>

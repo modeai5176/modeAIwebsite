@@ -7,6 +7,7 @@ import StarBorder from "./StarBorder"
 interface ContactFormData {
   name: string
   email: string
+  phoneCode: string
   phone: string
   company: string
   businessType: string
@@ -17,6 +18,7 @@ const ContactForm = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
+    phoneCode: "+1",
     phone: "",
     company: "",
     businessType: "",
@@ -43,7 +45,14 @@ const ContactForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: `${formData.phoneCode}${formData.phone}`.replace(/\s+/g, ''),
+          company: formData.company,
+          service: formData.businessType,
+          message: formData.message,
+        }),
       })
 
       const result = await response.json()
@@ -53,6 +62,7 @@ const ContactForm = () => {
         setFormData({
           name: "",
           email: "",
+          phoneCode: "+1",
           phone: "",
           company: "",
           businessType: "",
@@ -145,18 +155,62 @@ const ContactForm = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
+            <label className="block text-sm font-medium text-white mb-2">
               Phone Number
             </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-text-muted focus:outline-none focus:border-bright-aqua transition-colors duration-300"
-              placeholder="+1 (555) 123-4567"
-            />
+            <div className="w-full bg-white/10 border border-white/20 rounded-lg text-white focus-within:border-bright-aqua transition-colors duration-300 flex items-center">
+              <select
+                id="phoneCode"
+                name="phoneCode"
+                value={formData.phoneCode}
+                onChange={handleInputChange}
+                className="bg-transparent pl-1 pr-1 py-3 outline-none w-[3rem] md:w-[4.25rem] lg:w-[4.85rem] shrink-0 text-sm"
+              >
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+81">🇯🇵 +81</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+7">🇷🇺 +7</option>
+                <option value="+55">🇧🇷 +55</option>
+                <option value="+52">🇲🇽 +52</option>
+                <option value="+27">🇿🇦 +27</option>
+                <option value="+64">🇳🇿 +64</option>
+                <option value="+353">🇮🇪 +353</option>
+                <option value="+351">🇵🇹 +351</option>
+                <option value="+31">🇳🇱 +31</option>
+                <option value="+41">🇨🇭 +41</option>
+                <option value="+46">🇸🇪 +46</option>
+                <option value="+47">🇳🇴 +47</option>
+                <option value="+358">🇫🇮 +358</option>
+                <option value="+90">🇹🇷 +90</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+974">🇶🇦 +974</option>
+                <option value="+965">🇰🇼 +965</option>
+                <option value="+968">🇴🇲 +968</option>
+                <option value="+20">🇪🇬 +20</option>
+                <option value="+254">🇰🇪 +254</option>
+                <option value="+233">🇬🇭 +233</option>
+                <option value="+234">🇳🇬 +234</option>
+              </select>
+              <div className="h-6 border-l border-white/20 mx-0.5" />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="flex-1 bg-transparent px-3 py-3 outline-none placeholder-text-muted"
+                placeholder="(555) 123-4567"
+              />
+            </div>
           </div>
           
           <div>
@@ -198,6 +252,8 @@ const ContactForm = () => {
             <option value="other">Other</option>
           </select>
         </div>
+
+        
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-white mb-2">

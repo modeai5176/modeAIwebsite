@@ -55,8 +55,8 @@ export default function HiddenPortfolioPage() {
         description: "Building a complete fitness business platform that turns visitors into paying customers and helps them scale their wellness brand.",
         image: "/images/CONSCIOUS KILO.webp",
         tags: ["Brand Building", "Online Sales", "Customer Engagement", "Business Scaling"],
-        website: "#",
-        status: "Ongoing Project",
+        website: "https://www.consciouskilo.com",
+        status: "Live Client",
         highlights: [
           "Created a powerful brand identity and website that positions them as the go-to fitness experts and attracts their ideal customers",
           "Built a fast, professional site with high-quality videos that load instantly and keep visitors engaged without any lag",
