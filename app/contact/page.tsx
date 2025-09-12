@@ -234,8 +234,7 @@ export default function ContactPage() {
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          className="flex-1 bg-transparent px-3 py-3 outline-none placeholder-text-muted"
-                          placeholder="(555) 123-4567"
+                          className="flex-1 bg-transparent px-3 py-3 outline-none"
                         />
                       </div>
                     </div>
