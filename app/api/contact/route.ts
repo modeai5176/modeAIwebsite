@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
 
 // Email sending function
 async function sendEmailNotification(data: {
@@ -7,37 +8,77 @@ async function sendEmailNotification(data: {
   phone: string
   company: string
   service: string
-  country: string
   message: string
 }) {
-  // For now, we'll use a simple console notification
-  // In production, you'd use a service like SendGrid, Resend, or Nodemailer
-  console.log('📧 EMAIL NOTIFICATION:')
-  console.log('To: as.srivastava100@gmail.com')
-  console.log('Subject: New Contact Form Submission')
-  console.log('From:', data.email)
-  console.log('Name:', data.name)
-  console.log('Company:', data.company)
-  console.log('Phone:', data.phone)
-  console.log('Service:', data.service)
-  console.log('Country:', data.country)
-  console.log('Message:', data.message)
-  console.log('📧 END EMAIL NOTIFICATION')
-  
-  // TODO: Replace with actual email service
-  // Example with SendGrid:
-  // await sgMail.send({
-  //   to: 'as.srivastava100@gmail.com',
-  //   from: 'noreply@yourdomain.com',
-  //   subject: 'New Contact Form Submission',
-  //   text: `Name: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`
-  // })
+  const {
+    SMTP_HOST,
+    SMTP_PORT,
+    SMTP_USER,
+    SMTP_PASS,
+    SMTP_FROM,
+    CONTACT_TO,
+  } = process.env
+
+  // If SMTP env vars are missing, fallback to console logging (non-fatal)
+  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !SMTP_FROM || !CONTACT_TO) {
+    console.warn('[contact] SMTP env vars missing - logging message instead of sending email')
+    console.log('📧 EMAIL (FAKE SEND):', {
+      to: CONTACT_TO || 'missing CONTACT_TO',
+      from: SMTP_FROM || 'missing SMTP_FROM',
+      subject: 'New Contact Form Submission',
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      company: data.company,
+      service: data.service,
+      message: data.message,
+    })
+    return
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: Number(SMTP_PORT),
+    secure: Number(SMTP_PORT) === 465, // true for 465, false for 587/25
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASS,
+    },
+  })
+
+  const subject = `New Contact Form Submission — ${data.name}`
+  const text = `Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Company: ${data.company || '-'}
+Service: ${data.service || '-'}
+
+Message:
+${data.message}`
+
+  const html = `<div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#111">
+  <h2>New Contact Form Submission</h2>
+  <p><strong>Name:</strong> ${data.name}</p>
+  <p><strong>Email:</strong> ${data.email}</p>
+  <p><strong>Phone:</strong> ${data.phone}</p>
+  <p><strong>Company:</strong> ${data.company || '-'}</p>
+  <p><strong>Service:</strong> ${data.service || '-'}</p>
+  <p><strong>Message:</strong><br/>${data.message.replace(/\n/g, '<br/>')}</p>
+</div>`
+
+  await transporter.sendMail({
+    from: SMTP_FROM,
+    to: CONTACT_TO,
+    subject,
+    text,
+    html,
+  })
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, company, service, country, message } = body
+    const { name, email, phone, company, service, message } = body
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -55,7 +96,6 @@ export async function POST(request: NextRequest) {
         phone,
         company,
         service,
-        country,
         message
       })
     } catch (emailError) {
@@ -70,7 +110,6 @@ export async function POST(request: NextRequest) {
       phone,
       company,
       service,
-      country,
       message,
       timestamp: new Date().toISOString(),
       source: 'contact-page'
