@@ -1,277 +1,384 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
+import { useRef } from "react";
 import {
   ArrowRight,
   Brain,
-  Cog,
-  Zap,
-  Database,
-  Shield,
-  Rocket,
+  MessageSquare,
+  Filter,
+  Workflow,
   CheckCircle,
-  Globe,
-  TrendingUp,
-  Mail,
-} from "lucide-react"
-import StarBorder from "../components/StarBorder"
+} from "lucide-react";
+import { motion, useInView, Variants } from "framer-motion";
+import StarBorder from "../components/StarBorder";
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30, scale: 0.96 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+      delay: i * 0.1,
+    },
+  }),
+};
 
 export default function ServicesPage() {
+  const heroRef = useRef(null);
+  const servicesRef = useRef(null);
+  const whyChooseRef = useRef(null);
+  const ctaRef = useRef(null);
+
+  const heroInView = useInView(heroRef, { once: true, margin: "-100px" });
+  const servicesInView = useInView(servicesRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const whyChooseInView = useInView(whyChooseRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
+
   const services = [
     {
-      icon: Cog,
-      title: "Business Process Automation (BPA)",
-      description: "Streamlining and optimizing your core workflows for maximum productivity with automation.",
-      features: [
-        "Workflow Optimization",
-        "Process Streamlining",
-        "Task Automation",
-        "Quality Assurance Systems",
-        "Performance Analytics",
+      icon: MessageSquare,
+      title: "AI Chatbots",
+      description:
+        "Instantly respond to customer questions, book appointments, and qualify leads 24/7.",
+      benefits: [
+        "Cut response time to zero",
+        "Handle 80% of routine queries",
+        "Convert up to 40% more visitors",
       ],
+      cta: "See Demo",
+      ctaHref: "/contact",
       color: "from-purple-500 to-pink-500",
     },
     {
-      icon: Database,
-      title: "CRM Automation",
+      icon: Filter,
+      title: "Lead Generation Automation",
       description:
-        "Transforming customer relationship management with intelligent tools that automate sales pipelines and lead nurturing.",
-      features: [
-        "Sales Pipeline Automation",
-        "Lead Nurturing Systems",
-        "Customer Service Automation",
-        "Contact Management",
-        "Sales Analytics",
+        "Capture, qualify, and follow up automatically — while you focus on running your business.",
+      benefits: [
+        "Never forget to follow up",
+        "Identify hot leads instantly",
+        "Save hours of manual work",
       ],
+      cta: "Book Strategy Call",
+      ctaHref: "/contact",
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Brain,
-      title: "AI Workflows & Custom AI Development",
+      title: "Custom AI Agents",
       description:
-        "Crafting bespoke AI workflows tailored to your unique business needs, from data analysis to decision support.",
-      features: [
-        "Custom AI Solutions",
-        "Data Analysis Automation",
-        "Decision Support Systems",
-        "Machine Learning Integration",
-        "Intelligent Process Design",
+        "From sales assistants to onboarding specialists — built for your exact workflow.",
+      benefits: [
+        "Fully tailored solutions",
+        "Integrates with your tools",
+        "Scales as you grow",
       ],
-      color: "from-green-500 to-emerald-500",
+      cta: "Get a Quote",
+      ctaHref: "/contact",
+      color: "from-green-500 to-teal-500",
     },
-    {
-      icon: Zap,
-      title: "Custom API Integrations",
-      description:
-        "Connecting disparate systems and applications for seamless data exchange and real-time operational synergy.",
-      features: [
-        "System Integration",
-        "Real-time Data Exchange",
-        "Third-party Connections",
-        "Workflow Synchronization",
-        "Data Flow Optimization",
-      ],
-      color: "from-red-500 to-orange-500",
-    },
-    {
-      icon: Shield,
-      title: "AI Agents",
-      description:
-        "Deploying intelligent AI agents for enhanced customer service, lead qualification, and internal support.",
-      features: [
-        "24/7 Customer Support",
-        "Lead Qualification",
-        "FAQ Automation",
-        "Internal Support Systems",
-        "Multi-platform Deployment",
-      ],
-      color: "from-indigo-500 to-purple-500",
-    },
-    {
-      icon: Rocket,
-      title: "Website Automation",
-      description:
-        "Automating key website functions like form submissions, appointment scheduling, and personalized user experiences.",
-      features: [
-        "Form Automation",
-        "Appointment Scheduling",
-        "User Experience Personalization",
-        "Lead Capture Optimization",
-        "Conversion Rate Enhancement",
-      ],
-      color: "from-yellow-500 to-orange-500",
-    },
-    {
-      icon: Globe,
-      title: "Website Development",
-      description:
-        "Creating modern, responsive websites that drive conversions and provide exceptional user experiences.",
-      features: [
-        "Responsive Web Design",
-        "E-commerce Development",
-        "Performance Optimization",
-        "Mobile-First Approach",
-        "SEO-Ready Architecture",
-      ],
-      color: "from-teal-500 to-green-500",
-    },
-    {
-      icon: TrendingUp,
-      title: "Digital Marketing and SEO",
-      description:
-        "Comprehensive digital marketing strategies and SEO optimization to boost your online visibility and drive growth.",
-      features: [
-        "Search Engine Optimization",
-        "Content Marketing Strategy",
-        "Social Media Management",
-        "Pay-Per-Click Advertising",
-        "Analytics & Reporting",
-      ],
-      color: "from-pink-500 to-rose-500",
-    },
-    {
-      icon: Mail,
-      title: "Automated Email Marketing and SMS Marketing",
-      description: "Intelligent email and SMS marketing automation to nurture leads and maintain customer engagement.",
-      features: [
-        "Email Campaign Automation",
-        "SMS Marketing Campaigns",
-        "Lead Nurturing Sequences",
-        "Personalization & Segmentation",
-        "Performance Tracking",
-      ],
-      color: "from-violet-500 to-purple-500",
-    },
-  ]
+  ];
 
-  const process = [
+  const whyChoosePoints = [
     {
-      step: "01",
-      title: "Discovery & Analysis",
-      description: "We dive deep into your business processes to understand your unique challenges and opportunities.",
+      icon: Brain,
+      title: "Tailored to Your Workflow",
+      description: "Every AI is built for your business, not off-the-shelf.",
+      color: "from-purple-500 to-pink-500",
     },
     {
-      step: "02",
-      title: "Strategy & Planning",
-      description: "Develop a comprehensive AI strategy tailored to your business goals and technical requirements.",
+      icon: Workflow,
+      title: "Seamless Integration",
+      description: "Connects to your tools with zero disruption.",
+      color: "from-blue-500 to-cyan-500",
     },
     {
-      step: "03",
-      title: "Design & Development",
-      description: "Create custom AI solutions with human-centric design principles and cutting-edge technology.",
+      icon: CheckCircle,
+      title: "Continuous Optimization",
+      description: "We track, learn, and improve your AI over time.",
+      color: "from-green-500 to-teal-500",
     },
-    {
-      step: "04",
-      title: "Implementation & Integration",
-      description: "Seamlessly integrate AI solutions into your existing systems with minimal disruption.",
-    },
-    {
-      step: "05",
-      title: "Training & Support",
-      description: "Comprehensive training for your team and ongoing support to ensure long-term success.",
-    },
-  ]
+  ];
 
   return (
     <div className="bg-gradient-to-b from-primary-bg via-primary-secondary to-primary-bg">
       <div className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(156,77,255,0.1),transparent_70%)]"></div>
+        {/* Header Section */}
+        <section ref={heroRef} className="py-20 relative overflow-hidden">
+          <motion.div
+            className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(156,77,255,0.12),transparent_70%)]"
+            animate={{
+              opacity: [0.8, 1, 0.8],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          ></motion.div>
           <div className="container mx-auto px-6 text-center relative z-10">
-            <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight" style={{fontFamily: 'var(--font-heading)', fontWeight: 700}}>
-              Our <span className="gradient-text">Services</span>
-            </h1>
-            <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
-              Comprehensive AI solutions designed to transform your business operations and unlock new possibilities.
-              From custom AI agents to complete digital transformation, we've got you covered.
-            </p>
+            <motion.div
+              initial="hidden"
+              animate={heroInView ? "visible" : "hidden"}
+              variants={staggerContainer}
+            >
+              <motion.h1
+                variants={fadeInUp}
+                className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight"
+              >
+                What We <span className="gradient-text">Build for You</span>
+              </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                transition={{ delay: 0.2 }}
+                className="text-xl md:text-2xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed"
+              >
+                AI tools custom-made for your business goals.
+              </motion.p>
+            </motion.div>
           </div>
         </section>
 
         {/* Services Grid */}
-        <section className="py-20 relative">
+        <section ref={servicesRef} className="py-20 relative">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(166,134,209,0.05),transparent_70%)]"></div>
           <div className="container mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              initial="hidden"
+              animate={servicesInView ? "visible" : "hidden"}
+              variants={staggerContainer}
+              className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            >
               {services.map((service, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="glass-card-strong border border-white/10 rounded-2xl p-8 card-3d hover:shadow-card-glow transition-all duration-300 group"
+                  custom={index}
+                  variants={cardVariants}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="glass-card-strong border border-white/10 rounded-2xl p-8 hover:shadow-card-glow transition-all duration-500 group cursor-pointer relative overflow-hidden"
+                  style={{ willChange: "transform" }}
                 >
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <service.icon size={32} className="text-white" />
+                  {/* Animated Gradient Glow Border */}
+                  <motion.div
+                    className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(166, 134, 209, 0.4), rgba(156, 77, 255, 0.4), rgba(255, 46, 197, 0.4), rgba(166, 134, 209, 0.4))`,
+                      backgroundSize: "200% 200%",
+                      filter: "blur(8px)",
+                      willChange: "opacity, background-position",
+                    }}
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                  <div className="absolute inset-0 rounded-2xl border border-white/10"></div>
+
+                  {/* Subtle gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl z-[1]"></div>
+
+                  <div className="relative z-[2]">
+                    <motion.div
+                      whileHover={{ scale: 1.15, rotate: 5 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                      className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+                    >
+                      <service.icon size={32} className="text-white" />
+                    </motion.div>
+                    <h3 className="text-2xl font-heading-semibold text-text-primary mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-text-muted font-body-regular leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-3 mb-8">
+                      {service.benefits.map((benefit, benefitIndex) => (
+                        <li
+                          key={benefitIndex}
+                          className="flex items-center text-text-muted font-body-regular"
+                        >
+                          <CheckCircle
+                            size={16}
+                            className="text-accent-purple mr-3 flex-shrink-0"
+                          />
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <StarBorder
+                        as={Link}
+                        href={service.ctaHref}
+                        className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-base relative group w-full justify-center"
+                      >
+                        <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent-purple/20 via-pink-500/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10"></span>
+                        {service.cta}
+                        <ArrowRight className="ml-2" size={18} />
+                      </StarBorder>
+                    </motion.div>
                   </div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-4" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>{service.title}</h3>
-                  <p className="text-text-muted mb-6 leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-text-muted" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
-                        <CheckCircle size={16} className="text-accent-purple mr-3 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="py-20 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,46,197,0.03),transparent_70%)]"></div>
+        {/* Why Choose ModeAI Section */}
+        <section ref={whyChooseRef} className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1228] to-[#0b0814]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(166,134,209,0.05),transparent_70%)]"></div>
           <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>
-                Our <span className="gradient-text">Process</span>
-              </h2>
-              <p className="text-lg text-text-muted max-w-2xl mx-auto" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>
-                A proven methodology that ensures successful AI implementation and maximum business impact.
-              </p>
-            </div>
+            <motion.div
+              initial="hidden"
+              animate={whyChooseInView ? "visible" : "hidden"}
+              variants={staggerContainer}
+              className="text-center mb-16"
+            >
+              <motion.h2
+                variants={fadeInUp}
+                className="text-4xl md:text-5xl font-heading-bold text-text-primary mb-6"
+              >
+                Why Businesses{" "}
+                <span className="gradient-text">Choose ModeAI</span>
+              </motion.h2>
+              <motion.p
+                variants={fadeInUp}
+                transition={{ delay: 0.2 }}
+                className="text-lg md:text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed"
+              >
+                More than just automation — we build intelligent systems that
+                drive growth.
+              </motion.p>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-              {process.map((step, index) => (
-                <div key={index} className="text-center group">
-                  <div className="bg-gradient-purple w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-white font-bold text-lg" style={{fontFamily: 'var(--font-heading)', fontWeight: 700}}>{step.step}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-text-primary mb-4" style={{fontFamily: 'var(--font-heading)', fontWeight: 600}}>{step.title}</h3>
-                  <p className="text-text-muted leading-relaxed" style={{fontFamily: 'var(--font-body)', fontWeight: 400}}>{step.description}</p>
-                </div>
+            <motion.div
+              initial="hidden"
+              animate={whyChooseInView ? "visible" : "hidden"}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+            >
+              {whyChoosePoints.map((point, index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  variants={cardVariants}
+                  className="text-center"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20,
+                    }}
+                    className={`w-16 h-16 bg-gradient-to-r ${point.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                  >
+                    <point.icon size={32} className="text-white" />
+                  </motion.div>
+                  <h3 className="text-xl font-heading-semibold text-text-primary mb-4">
+                    {point.title}
+                  </h3>
+                  <p className="text-text-muted font-body-regular leading-relaxed">
+                    {point.description}
+                  </p>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(156,77,255,0.15),transparent_70%)]"></div>
+        {/* CTA Banner */}
+        <section ref={ctaRef} className="py-20 relative overflow-hidden">
+          <motion.div
+            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(156,77,255,0.15),transparent_70%)]"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.8, 1, 0.8],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          ></motion.div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(166,134,209,0.08),transparent_70%)]"></div>
           <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold font-sora text-text-primary mb-8">
-              Ready to Get <span className="gradient-text">Started</span>?
-            </h2>
-            <p className="text-xl text-text-muted font-inter mb-8 max-w-2xl mx-auto">
-              Let's discuss how our AI solutions can transform your business operations and drive growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <StarBorder
-                as={Link}
-                href="/contact"
-                className="font-bold font-poppins hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg rounded-full"
-                color="#A686D1"
-                speed="2.5s"
+            <motion.div
+              initial="hidden"
+              animate={ctaInView ? "visible" : "hidden"}
+              variants={staggerContainer}
+            >
+              <motion.h2
+                variants={fadeInUp}
+                className="text-3xl md:text-5xl font-heading-bold text-text-primary mb-8 max-w-3xl mx-auto leading-tight"
               >
-                Schedule Consultation
-                <ArrowRight className="ml-3" size={24} />
-              </StarBorder>
-            </div>
+                Start saving hours and booking more clients{" "}
+                <span className="gradient-text">today.</span>
+              </motion.h2>
+              <motion.div variants={fadeInUp} transition={{ delay: 0.2 }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <StarBorder
+                    as={Link}
+                    href="/contact"
+                    className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg relative group px-10 py-5"
+                  >
+                    <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent-purple/20 via-pink-500/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10"></span>
+                    Book a Demo
+                    <ArrowRight className="ml-3" size={24} />
+                  </StarBorder>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
       </div>
     </div>
-  )
+  );
 }
