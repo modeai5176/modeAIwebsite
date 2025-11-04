@@ -1,6 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Rocket, PiggyBank, BarChart3, Target, ShieldCheck, Users } from "lucide-react";
+import {
+  Rocket,
+  PiggyBank,
+  BarChart3,
+  Target,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 
 const features = [
   {
@@ -60,18 +67,25 @@ const WhyChooseModeAI = React.memo(function WhyChooseModeAI() {
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-pink-500 opacity-30 blur-3xl rounded-full" />
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-400 opacity-20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 opacity-30 blur-2xl rounded-full" />
-        {/* Animate background lighting on scroll */}
       </div>
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         <h2
           id="why-choose-modeai-heading"
           className="text-center text-4xl md:text-5xl font-heading-bold text-white tracking-tight"
         >
-          Why Choose <span className="bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400 bg-clip-text text-transparent">ModeAI</span>?
+          Why Choose{" "}
+          <span className="bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            ModeAI
+          </span>
+          ?
         </h2>
         <p className="max-w-2xl mx-auto mt-4 text-center text-lg text-neutral-300 font-body-regular">
-          Discover how ModeAI's AI automation for business delivers intelligent operations, automated workflows, and productivity software for business. Cut operational costs with AI and scale your startup with AI-powered solutions designed for modern enterprises.
+          Discover how ModeAI's AI automation for business delivers intelligent
+          operations, automated workflows, and productivity software for
+          business. Cut operational costs with AI and scale your startup with
+          AI-powered solutions designed for modern enterprises.
         </p>
+
         <motion.div
           className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
           variants={containerVariants}
@@ -102,4 +116,4 @@ const WhyChooseModeAI = React.memo(function WhyChooseModeAI() {
   );
 });
 
-export default WhyChooseModeAI; 
+export default WhyChooseModeAI;
