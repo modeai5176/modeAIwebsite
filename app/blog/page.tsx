@@ -361,27 +361,26 @@ export default function BlogPage() {
               initial="hidden"
               animate={categoryInView ? "visible" : "hidden"}
               variants={staggerContainer}
-              className="flex flex-wrap justify-center gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              className="flex flex-wrap justify-center gap-4 overflow-hidden py-4"
             >
               {categories.map((category, index) => (
-                <motion.button
-                  key={index}
-                  variants={cardVariants}
-                  custom={index}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-full font-heading-semibold text-sm transition-all duration-300 relative ${
-                    selectedCategory === category
-                      ? "bg-gradient-to-r from-accent-purple to-pink-500 text-white shadow-lg shadow-purple-500/30"
-                      : "border border-accent-purple/20 text-white/70 hover:text-white hover:border-accent-purple/40 bg-transparent"
-                  }`}
-                  whileHover={{ scale: 1.08, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={`Filter by ${category}`}
-                >
-                  <span className="relative z-10 whitespace-nowrap">
-                    {category}
-                  </span>
-                </motion.button>
+                <div key={index} className="overflow-hidden rounded-full">
+                  <motion.button
+                    variants={cardVariants}
+                    custom={index}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`relative rounded-full border px-6 py-3 font-heading-semibold text-sm transition-all duration-300 ease-out whitespace-nowrap ${
+                      selectedCategory === category
+                        ? "bg-gradient-to-r from-accent-purple to-pink-500 text-white border-transparent shadow-[0_0_15px_rgba(166,134,209,0.25)]"
+                        : "border-accent-purple/20 text-white/80 bg-transparent hover:text-white hover:border-transparent hover:bg-gradient-to-r hover:from-accent-purple hover:to-pink-500 hover:shadow-[0_0_20px_rgba(166,134,209,0.3)]"
+                    }`}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    aria-label={`Filter by ${category}`}
+                  >
+                    <span className="relative z-10">{category}</span>
+                  </motion.button>
+                </div>
               ))}
             </motion.div>
           </div>
@@ -403,7 +402,7 @@ export default function BlogPage() {
                   variants={cardVariants}
                   custom={index}
                   whileHover={{ y: -6, scale: 1.02 }}
-                  className="glass-card-strong border border-white/10 rounded-xl overflow-hidden hover:shadow-card-glow transition-all duration-500 group relative"
+                  className="glass-card-strong border border-white/10 rounded-xl overflow-hidden hover:shadow-card-glow transition-all duration-500 group relative flex flex-col"
                   style={{ willChange: "transform" }}
                 >
                   <motion.div
@@ -413,45 +412,64 @@ export default function BlogPage() {
                       filter: "blur(10px)",
                     }}
                   />
-                  <div className="relative h-48 overflow-hidden aspect-video">
+                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-xl">
                     <Image
                       src={post.image}
                       alt={post.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       quality={90}
                     />
-                    <div className="absolute top-4 left-4">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute top-4 left-4 z-10">
                       <span className="bg-gradient-to-r from-accent-purple to-pink-500 text-white px-3 py-1 rounded-full text-xs font-heading-semibold uppercase tracking-wide">
                         {post.category}
                       </span>
                     </div>
                   </div>
-                  <div className="p-6" style={{ lineHeight: "1.6" }}>
-                    <h3
-                      className="text-xl md:text-2xl font-heading-semibold text-text-primary mb-3 leading-tight group-hover:text-accent-purple transition-colors duration-300"
-                      style={{ lineHeight: "1.4" }}
-                    >
-                      {post.title}
-                    </h3>
-                    <p
-                      className="text-sm text-white/70 mb-5 leading-relaxed font-body-regular"
-                      style={{ lineHeight: "1.6" }}
-                    >
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center text-white/60 text-xs space-x-4 font-body-regular pt-4 border-t border-white/10">
-                      <div className="flex items-center">
-                        <div className="w-5 h-5 bg-gradient-to-r from-accent-purple to-pink-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold mr-2">
-                          M
+                  <div
+                    className="p-6 flex flex-col flex-grow"
+                    style={{ lineHeight: "1.6" }}
+                  >
+                    <div className="space-y-2 flex-grow min-h-[140px]">
+                      <h3
+                        className="text-xl md:text-2xl font-heading-semibold text-text-primary leading-tight group-hover:text-accent-purple transition-colors duration-300"
+                        style={{ lineHeight: "1.4" }}
+                      >
+                        {post.title}
+                      </h3>
+                      <p
+                        className="text-sm text-white/70 leading-relaxed font-body-regular"
+                        style={{ lineHeight: "1.6" }}
+                      >
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between text-white/60 text-xs font-body-regular pt-4 mt-auto border-t border-white/10">
+                      <div className="flex items-center space-x-4">
+                        <div className="flex items-center">
+                          <div className="w-5 h-5 bg-gradient-to-r from-accent-purple to-pink-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold mr-2">
+                            M
+                          </div>
+                          <span>{post.author}</span>
                         </div>
-                        <span>{post.author}</span>
+                        <div className="flex items-center">
+                          <Calendar size={12} className="mr-1.5" />
+                          {post.date}
+                        </div>
                       </div>
-                      <div className="flex items-center">
-                        <Calendar size={12} className="mr-1.5" />
-                        {post.date}
-                      </div>
+                      <Link
+                        href={`/blog/${post.id}`}
+                        className="inline-flex items-center text-white hover:text-cyan-400 font-heading-semibold text-xs transition-colors duration-300 group/link"
+                        aria-label={`Read more: ${post.title}`}
+                      >
+                        Read More
+                        <ArrowRight
+                          className="ml-1.5 group-hover/link:translate-x-1 transition-transform duration-300"
+                          size={14}
+                        />
+                      </Link>
                     </div>
                   </div>
                 </motion.article>
