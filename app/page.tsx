@@ -184,7 +184,7 @@ const HomePage = memo(function HomePage() {
       {/* Vapi Voice Demo */}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#110e1c]">
         {/* Background Shader (Full Screen) */}
         <div className="absolute inset-0 w-full h-full">
           <GradientBlinds
@@ -264,7 +264,7 @@ const HomePage = memo(function HomePage() {
 
       <div className="h-1 w-full bg-[#110e1c] opacity-80" />
       {/* Services Preview */}
-      <section className="py-16 relative">
+      <section className="py-16 relative bg-[#110e1c]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(166,134,209,0.05),transparent_70%)]"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
@@ -319,7 +319,7 @@ const HomePage = memo(function HomePage() {
       {/* About Us Preview */}
       <WhyChooseModeAI />
       {/* Blog Section */}
-      <section className="py-16 relative">
+      <section className="py-16 relative bg-[#110e1c]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(166,134,209,0.05),transparent_70%)]"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
@@ -420,7 +420,7 @@ const HomePage = memo(function HomePage() {
       </section>
       <div className="h-1 w-full bg-[#110e1c] opacity-80" />
       {/* Quote Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden bg-[#110e1c]">
         <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-heading-bold text-text-primary mb-8">
             Ready to <span className="gradient-text">Automate</span> Your
