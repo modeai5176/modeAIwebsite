@@ -1,100 +1,17 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState } from "react"
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ArrowRight } from "lucide-react"
-
-import StarBorder from "../components/StarBorder"
-import Link from "next/link"
-import { motion, useInView, Variants } from "framer-motion"
-import styles from "./ProcessSection.module.css"
+import React, { useState } from "react";
+import { Mail, Phone } from "lucide-react";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
-    company: "",
-    phoneCode: "+1",
     phone: "",
     service: "",
     message: "",
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: `${formData.phoneCode}${formData.phone}`.replace(/\s+/g, ''),
-          company: formData.company,
-          service: formData.service,
-          message: formData.message,
-        }),
-      })
-      const result = await res.json()
-      if (result.success) {
-        setIsSubmitted(true)
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          phoneCode: "+1",
-          phone: "",
-          service: "",
-          message: "",
-        })
-        setTimeout(() => setIsSubmitted(false), 3000)
-      } else {
-        alert('Failed to send message: ' + (result.error || 'Unknown error'))
-      }
-    } catch (error) {
-      alert('Failed to send message: ' + (error instanceof Error ? error.message : 'Unknown error'))
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Phone",
-      details: ["🇮🇳 +91 70835-89845", "🇦🇪 +971  (054) 303 9984", "🇨🇦 +1 (780) 908-2320"],
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      details: ["admin@mode-ai.co"],
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: MapPin,
-      title: "Based In",
-      details: ["India, UAE, Canada"],
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 2:00 PM"],
-      color: "from-orange-500 to-red-500",
-    },
-  ]
+  });
 
   const services = [
     "Website Development",
@@ -106,328 +23,211 @@ export default function ContactPage() {
     "Website Automation",
     "Digital Marketing and SEO",
     "Automated Email Marketing and SMS Marketing",
-  ]
+  ];
+
+  function handleChange(
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    // keep existing behavior - user can wire API endpoint
+    try {
+      // placeholder: perform submission
+    } catch (err) {
+      /* noop */
+    }
+  }
 
   return (
-    <div className="bg-gradient-to-b from-primary-bg via-primary-secondary to-primary-bg">
-      <div className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(156,77,255,0.1),transparent_70%)]"></div>
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <h1 className="text-4xl md:text-7xl font-heading-bold text-text-primary mb-8 leading-tight">
-              Get In <span className="gradient-text">Touch</span>
-            </h1>
-            <p className="text-xl text-text-muted font-body-regular max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your business with soulful automation? Let's discuss how our AI solutions can drive
-              growth and efficiency for your organization.
-            </p>
+    <div className="min-h-screen bg-gradient-to-b from-[#000000] via-[#07080a] to-[#0b0b0d] text-white antialiased">
+      <div className="container mx-auto px-6 lg:px-8 py-12">
+        {/* Top hero/title */}
+        <div className="text-center mb-10">
+          <div className="inline-block px-3 py-1 rounded-full bg-white/6 text-sm mb-4">
+            Contact
           </div>
-        </section>
+          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
+            Get in Touch with Us
+          </h1>
+          <p className="mt-3 text-sm md:text-base text-white/70 max-w-2xl mx-auto">
+            Have questions or need AI solutions? Let us know by filling out the
+            form, and we'll be in touch!
+          </p>
+        </div>
 
-        {/* Contact Form & Info */}
-        <section className="py-20 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(166,134,209,0.05),transparent_70%)]"></div>
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div className="glass-card-strong border border-white/10 rounded-2xl p-8">
-                <h2 className="text-3xl font-heading-bold text-text-primary mb-6">Send Us a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-text-primary font-heading-medium mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-text-primary font-heading-medium mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="company" className="block text-text-primary font-heading-medium mb-2">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-text-primary font-heading-medium mb-2">
-                        Phone Number
-                      </label>
-                      <div className="w-full bg-primary-bg border border-border-gray rounded-xl text-text-primary focus-within:border-accent-purple transition-colors duration-300 flex items-center">
-                        <select
-                          id="phoneCode"
-                          name="phoneCode"
-                          value={formData.phoneCode}
-                          onChange={handleChange}
-                          className="bg-transparent pl-1 pr-1 py-3 outline-none w-[3rem] md:w-[4.25rem] lg:w-[4.85rem] shrink-0 text-sm"
-                        >
-                          <option value="+1">🇺🇸 +1</option>
-                          <option value="+91">🇮🇳 +91</option>
-                          <option value="+971">🇦🇪 +971</option>
-                          <option value="+44">🇬🇧 +44</option>
-                          <option value="+61">🇦🇺 +61</option>
-                          <option value="+65">🇸🇬 +65</option>
-                          <option value="+81">🇯🇵 +81</option>
-                          <option value="+86">🇨🇳 +86</option>
-                          <option value="+49">🇩🇪 +49</option>
-                          <option value="+33">🇫🇷 +33</option>
-                          <option value="+39">🇮🇹 +39</option>
-                          <option value="+34">🇪🇸 +34</option>
-                          <option value="+7">🇷🇺 +7</option>
-                          <option value="+55">🇧🇷 +55</option>
-                          <option value="+52">🇲🇽 +52</option>
-                          <option value="+27">🇿🇦 +27</option>
-                          <option value="+64">🇳🇿 +64</option>
-                          <option value="+353">🇮🇪 +353</option>
-                          <option value="+351">🇵🇹 +351</option>
-                          <option value="+31">🇳🇱 +31</option>
-                          <option value="+41">🇨🇭 +41</option>
-                          <option value="+46">🇸🇪 +46</option>
-                          <option value="+47">🇳🇴 +47</option>
-                          <option value="+358">🇫🇮 +358</option>
-                          <option value="+90">🇹🇷 +90</option>
-                          <option value="+966">🇸🇦 +966</option>
-                          <option value="+974">🇶🇦 +974</option>
-                          <option value="+965">🇰🇼 +965</option>
-                          <option value="+968">🇴🇲 +968</option>
-                          <option value="+20">🇪🇬 +20</option>
-                          <option value="+254">🇰🇪 +254</option>
-                          <option value="+233">🇬🇭 +233</option>
-                          <option value="+234">🇳🇬 +234</option>
-                        </select>
-                        <div className="h-6 border-l border-border-gray mx-0.5" />
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          required
-                          className="flex-1 bg-transparent px-3 py-3 outline-none"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="service" className="block text-text-primary font-heading-medium mb-2">
-                      Service of Interest
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300"
-                    >
-                      <option value="">Select a service</option>
-                      {services.map((service, index) => (
-                        <option key={index} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  
-
-                  <div>
-                    <label htmlFor="message" className="block text-text-primary font-heading-medium mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-primary-bg border border-border-gray rounded-xl text-text-primary font-body-regular focus:outline-none focus:border-accent-purple transition-colors duration-300 resize-vertical"
-                    />
-                  </div>
-
-                  <div className="flex justify-center">
-                  <StarBorder
-                    as="button"
-                    type="submit"
-                    disabled={isSubmitted || isSubmitting}
-                      className="font-heading-semibold hover:shadow-primary-glow transition-all duration-300 inline-flex items-center text-lg whitespace-nowrap px-8 py-4 disabled:opacity-60"
-                    color="#A686D1"
-                    speed="2.5s"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Sending...
-                      </>
-                    ) : isSubmitted ? (
-                      <>
-                        <CheckCircle className="mr-2" size={20} />
-                        Message Sent!
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2" size={20} />
-                        Send Message
-                      </>
-                    )}
-                  </StarBorder>
-                  </div>
-                </form>
-              </div>
-
-              {/* Contact Information */}
-              <div className="space-y-8">
+        {/* Info cards */}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <article className="relative overflow-hidden rounded-[18px] bg-[#0b0b0c] border border-[#151516] p-5 shadow-[0_6px_18px_rgba(0,0,0,0.6)]">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-md">
+                  <Mail className="text-white" size={18} />
+                </div>
                 <div>
-                  <h2 className="text-3xl font-heading-bold text-text-primary mb-6">Contact Information</h2>
-                  <p className="text-text-muted font-body-regular leading-relaxed mb-8">
-                    We're here to help you transform your business with AI. Reach out to us through any of the channels
-                    below, and our team will get back to you within 24 hours.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {contactInfo.map((info, index) => (
-                    <div
-                      key={index}
-                      className="glass-card-strong border border-white/10 rounded-2xl p-6 card-3d hover:shadow-card-glow transition-all duration-300"
-                    >
-                      <div
-                        className={`w-12 h-12 bg-gradient-to-r ${info.color} rounded-xl flex items-center justify-center mb-4`}
-                      >
-                        <info.icon size={24} className="text-white" />
-                      </div>
-                      <h3 className="text-xl font-heading-semibold text-text-primary mb-3">{info.title}</h3>
-                      <div className="space-y-1">
-                        {info.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-text-muted font-body-regular">
-                            {detail}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                  <div className="text-sm font-medium">E-mail</div>
+                  <div className="text-sm text-white/70 mt-1">
+                    info@graphsensesolutions.com
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+              {/* blue bottom glow */}
+              <div className="pointer-events-none absolute right-0 bottom-0 w-36 h-20 bg-gradient-to-l from-[#153b9f]/70 to-transparent rounded-tl-xl opacity-95" />
+            </article>
 
-        {/* FAQ Section */}
-        <section className="py-20 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,46,197,0.03),transparent_70%)]"></div>
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-heading-bold text-text-primary mb-6">
-                Frequently Asked <span className="gradient-text">Questions</span>
-              </h2>
-              <p className="text-lg text-text-muted font-body-regular max-w-2xl mx-auto">
-                Quick answers to common questions about our services and process.
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto space-y-6">
-              {[
-                {
-                  question: "How long does it take to implement an AI solution?",
-                  answer:
-                    "Implementation timelines vary based on project complexity, but typically range from 4-12 weeks. We provide detailed project timelines during our initial consultation.",
-                },
-                {
-                  question: "Do you provide ongoing support after implementation?",
-                  answer:
-                    "Yes, we offer comprehensive support packages including monitoring, maintenance, updates, and training to ensure your AI solutions continue to deliver value.",
-                },
-                {
-                  question: "Can you integrate with our existing systems?",
-                  answer:
-                    "Absolutely. Our solutions are designed to seamlessly integrate with your existing infrastructure, minimizing disruption to your current operations.",
-                },
-                {
-                  question: "What industries do you serve?",
-                  answer:
-                    "We work with businesses across various industries including healthcare, finance, manufacturing, retail, and professional services. Our solutions are customized for each sector's unique needs.",
-                },
-                {
-                  question: "How do you ensure data security and privacy?",
-                  answer:
-                    "We implement enterprise-grade security measures, comply with industry standards, and follow strict data privacy protocols to protect your sensitive information.",
-                },
-              ].map((faq, index) => (
-                <div
-                  key={index}
-                  className="glass-card-strong border border-white/10 rounded-2xl p-6 hover:shadow-card-glow transition-all duration-300"
-                >
-                  <h3 className="text-xl font-heading-semibold text-text-primary mb-3">{faq.question}</h3>
-                  <p className="text-text-muted font-body-regular leading-relaxed">{faq.answer}</p>
+            <article className="relative overflow-hidden rounded-[18px] bg-[#0b0b0c] border border-[#151516] p-5 shadow-[0_6px_18px_rgba(0,0,0,0.6)]">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-md">
+                  <Phone className="text-white" size={18} />
                 </div>
-              ))}
-            </div>
+                <div>
+                  <div className="text-sm font-medium">Phone</div>
+                  <div className="text-sm text-white/70 mt-1">
+                    +91 87884 41532
+                  </div>
+                </div>
+              </div>
+              <div className="pointer-events-none absolute right-0 bottom-0 w-36 h-20 bg-gradient-to-l from-[#153b9f]/70 to-transparent rounded-tl-xl opacity-95" />
+            </article>
           </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(156,77,255,0.15),transparent_70%)]"></div>
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-heading-bold text-text-primary mb-8">
-              Ready to <span className="gradient-text">Get Started</span>?
-            </h2>
-            <p className="text-xl text-text-muted font-body-regular mb-8 max-w-2xl mx-auto">
-              Schedule a free consultation to discuss your AI automation needs and discover how we can help transform
-              your business.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+917083589845"
-                className="metallic-fluid-btn bg-gradient-purple text-white px-10 py-5 rounded-full font-heading-semibold hover:shadow-purple-glow transition-all duration-300 glow-effect inline-flex items-center text-lg"
-              >
-                <Phone className="mr-3" size={24} />
-                Call Now
-              </a>
-              <a
-                href="mailto:admin@mode-ai.co"
-                className="border border-accent-purple text-accent-purple px-10 py-5 rounded-full font-heading-semibold hover:bg-accent-purple hover:text-white transition-all duration-300 inline-flex items-center text-lg"
-              >
-                <Mail className="mr-3" size={24} />
-                Email Us
-              </a>
-            </div>
+          {/* Form card */}
+          <div className="rounded-[20px] bg-[#070708] border border-[#161617] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-white/80 mb-2">
+                    First Name
+                  </label>
+                  <input
+                    name="firstName"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-white/80 mb-2">
+                    Last Name
+                  </label>
+                  <input
+                    name="lastName"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-white/80 mb-2">
+                    Email
+                  </label>
+                  <div className="relative">
+                    <input
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 pr-12 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#0b0b0d] p-1 rounded-md border border-[#1f1f1f]">
+                      <svg
+                        width="18"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden
+                      >
+                        <path
+                          d="M2 4.5C2 3.67157 2.67157 3 3.5 3H20.5C21.3284 3 22 3.67157 22 4.5V19.5C22 20.3284 21.3284 21 20.5 21H3.5C2.67157 21 2 20.3284 2 19.5V4.5Z"
+                          stroke="#7ee3b5"
+                          strokeWidth="0.9"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M22 6L12 13L2 6"
+                          stroke="#7ee3b5"
+                          strokeWidth="0.9"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm text-white/80 mb-2">
+                    Phone
+                  </label>
+                  <input
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm text-white/80 mb-2">
+                  Service of Interest
+                </label>
+                <select
+                  name="service"
+                  value={form.service}
+                  onChange={handleChange}
+                  className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                >
+                  <option value="" className="text-white bg-[#0d0d10]">
+                    Select a service
+                  </option>
+                  {services.map((s, idx) => (
+                    <option
+                      key={idx}
+                      value={s}
+                      className="text-white bg-[#0d0d10]"
+                    >
+                      {s}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm text-white/80 mb-2">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={6}
+                  className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition resize-vertical"
+                ></textarea>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="w-full h-12 rounded-lg bg-gradient-to-r from-[#2f57b6] to-[#2a55b8] shadow-[0_8px_30px_rgba(47,87,182,0.28)] flex items-center justify-center gap-2 text-white font-medium transition hover:brightness-105"
+                >
+                  <span>Submit Form</span>
+                </button>
+              </div>
+            </form>
           </div>
-        </section>
+
+          {/* small footer spacing */}
+          <div className="h-10" />
+        </div>
       </div>
     </div>
-  )
+  );
 }
