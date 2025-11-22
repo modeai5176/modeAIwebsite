@@ -1,67 +1,83 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
-import { Inter, Poppins, Space_Grotesk, Sora, Open_Sans, DM_Sans } from "next/font/google"
-import "./globals.css"
-import ConditionalLayout from "./components/ConditionalLayout"
+import type React from "react";
+import type { Metadata, Viewport } from "next";
+import {
+  Inter,
+  Poppins,
+  Space_Grotesk,
+  Sora,
+  Open_Sans,
+  DM_Sans,
+} from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: 'swap',
+  display: "swap",
   preload: true,
-})
+});
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-poppins",
-  display: 'swap',
+  display: "swap",
   preload: true,
-})
+});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
-  display: 'swap',
-})
+  display: "swap",
+});
 
 const sora = Sora({
   subsets: ["latin"],
   variable: "--font-sora",
-  display: 'swap',
+  display: "swap",
   preload: true,
-})
+});
 
 const openSans = Open_Sans({
   subsets: ["latin"],
   variable: "--font-open-sans",
-  display: 'swap',
-})
+  display: "swap",
+});
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
-  display: 'swap',
-})
+  display: "swap",
+});
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: '#1a1a2e',
-}
+  themeColor: "#1a1a2e",
+};
 
 export const metadata: Metadata = {
   title: {
     default: "AI Automation for Businesses | Mode AI",
-    template: "%s | Mode AI"
+    template: "%s | Mode AI",
   },
-  description: "Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.",
+  description:
+    "Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.",
   generator: "Next.js",
   applicationName: "Mode AI",
   referrer: "origin-when-cross-origin",
-  keywords: ["AI automation", "business automation", "AI agents", "digital transformation", "ModeAI", "Vancouver", "voice assistants", "CRM workflows"],
+  keywords: [
+    "AI automation",
+    "business automation",
+    "AI agents",
+    "digital transformation",
+    "ModeAI",
+    "Vancouver",
+    "voice assistants",
+    "CRM workflows",
+  ],
   authors: [{ name: "ModeAI Team" }],
   creator: "ModeAI",
   publisher: "ModeAI",
@@ -70,22 +86,24 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.mode-ai.co'),
+  metadataBase: new URL("https://www.mode-ai.co"),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://www.mode-ai.co',
-    title: 'AI Automation for Businesses | Mode AI',
-    description: 'Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.',
-    siteName: 'Mode AI',
+    type: "website",
+    locale: "en_US",
+    url: "https://www.mode-ai.co",
+    title: "AI Automation for Businesses | Mode AI",
+    description:
+      "Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.",
+    siteName: "Mode AI",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'AI Automation for Businesses | Mode AI',
-    description: 'Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.',
+    card: "summary_large_image",
+    title: "AI Automation for Businesses | Mode AI",
+    description:
+      "Automate your business with Mode AI — AI-powered voice assistants, CRM workflows, and smart automation solutions. Based in Vancouver, serving globally.",
   },
   robots: {
     index: true,
@@ -93,93 +111,104 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
-    icon: '/logo_transparent.png',
-    shortcut: '/logo_transparent.png',
-    apple: '/logo_transparent.png',
+    icon: "/logo_transparent.png",
+    shortcut: "/logo_transparent.png",
+    apple: "/logo_transparent.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className="h-full">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Mode AI",
-              "url": "https://www.mode-ai.co/",
-              "logo": "https://www.mode-ai.co/logo2.png",
-              "description": "Mode AI is a Vancouver-based AI automation company that helps businesses streamline operations using intelligent voice assistants, CRM automation, and workflow solutions.",
-              "address": {
+              name: "Mode AI",
+              url: "https://www.mode-ai.co/",
+              logo: "https://www.mode-ai.co/logo2.png",
+              description:
+                "Mode AI is a Vancouver-based AI automation company that helps businesses streamline operations using intelligent voice assistants, CRM automation, and workflow solutions.",
+              address: {
                 "@type": "PostalAddress",
-                "addressLocality": "Vancouver",
-                "addressRegion": "BC",
-                "addressCountry": "Canada"
+                addressLocality: "Vancouver",
+                addressRegion: "BC",
+                addressCountry: "Canada",
               },
-              "contactPoint": {
+              contactPoint: {
                 "@type": "ContactPoint",
-                "telephone": "+1-780-908-2320",
-                "contactType": "Customer Service"
+                telephone: "+1-780-908-2320",
+                contactType: "Customer Service",
               },
-              "sameAs": [
+              sameAs: [
                 "https://www.linkedin.com/company/mode-ai-co/",
-                "https://www.instagram.com/modeai.co/"
+                "https://www.instagram.com/modeai.co/",
               ],
-              "hasOfferCatalog": {
+              hasOfferCatalog: {
                 "@type": "OfferCatalog",
-                "name": "AI Automation Services",
-                "itemListElement": [
+                name: "AI Automation Services",
+                itemListElement: [
                   {
                     "@type": "Offer",
-                    "itemOffered": {
+                    itemOffered: {
                       "@type": "Service",
-                      "name": "AI Voice Assistants",
-                      "description": "Automated voice AI to handle customer calls, bookings, and support inquiries."
-                    }
+                      name: "AI Voice Assistants",
+                      description:
+                        "Automated voice AI to handle customer calls, bookings, and support inquiries.",
+                    },
                   },
                   {
                     "@type": "Offer",
-                    "itemOffered": {
+                    itemOffered: {
                       "@type": "Service",
-                      "name": "CRM Workflow Automation",
-                      "description": "Seamlessly integrate AI into your CRM to improve sales and customer retention."
-                    }
+                      name: "CRM Workflow Automation",
+                      description:
+                        "Seamlessly integrate AI into your CRM to improve sales and customer retention.",
+                    },
                   },
                   {
                     "@type": "Offer",
-                    "itemOffered": {
+                    itemOffered: {
                       "@type": "Service",
-                      "name": "Business Process Automation",
-                      "description": "Custom AI workflows for repetitive task automation to save time and boost productivity."
-                    }
-                  }
-                ]
-              }
-            })
+                      name: "Business Process Automation",
+                      description:
+                        "Custom AI workflows for repetitive task automation to save time and boost productivity.",
+                    },
+                  },
+                ],
+              },
+            }),
           }}
         />
       </head>
       <body
         className={`${inter.variable} ${poppins.variable} ${spaceGrotesk.variable} ${sora.variable} ${openSans.variable} ${dmSans.variable} bg-primary-bg text-text-primary antialiased h-full m-0 p-0`}
       >
-        <ConditionalLayout>{children}</ConditionalLayout>
+        {children}
       </body>
     </html>
-  )
+  );
 }

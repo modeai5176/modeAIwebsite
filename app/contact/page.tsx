@@ -45,16 +45,16 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#000000] via-[#07080a] to-[#0b0b0d] text-white antialiased">
-      <div className="container mx-auto px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-6 lg:px-8 py-20">
         {/* Top hero/title */}
-        <div className="text-center mb-10">
-          <div className="inline-block px-3 py-1 rounded-full bg-white/6 text-sm mb-4">
+        <div className="text-center mb-16">
+          <div className="inline-block px-4 py-1.5 rounded-full border border-white/20 text-sm mb-6 text-white/80">
             Contact
           </div>
-          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
             Get in Touch with Us
           </h1>
-          <p className="mt-3 text-sm md:text-base text-white/70 max-w-2xl mx-auto">
+          <p className="mt-4 text-base md:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
             Have questions or need AI solutions? Let us know by filling out the
             form, and we'll be in touch!
           </p>
@@ -62,70 +62,75 @@ export default function ContactPage() {
 
         {/* Info cards */}
         <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <article className="relative overflow-hidden rounded-[18px] bg-[#0b0b0c] border border-[#151516] p-5 shadow-[0_6px_18px_rgba(0,0,0,0.6)]">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-md">
-                  <Mail className="text-white" size={18} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <article className="relative overflow-hidden rounded-2xl bg-[#0b0b0c] border border-[#1a1a1c] p-6 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
+              <div className="flex items-start gap-4 relative z-10">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-lg flex-shrink-0">
+                  <Mail className="text-white" size={20} />
                 </div>
                 <div>
-                  <div className="text-sm font-medium">E-mail</div>
-                  <div className="text-sm text-white/70 mt-1">
+                  <div className="text-base font-semibold text-white">
+                    E-mail
+                  </div>
+                  <div className="text-sm text-white/70 mt-2">
                     info@graphsensesolutions.com
                   </div>
                 </div>
               </div>
-              {/* blue bottom glow */}
-              <div className="pointer-events-none absolute right-0 bottom-0 w-36 h-20 bg-gradient-to-l from-[#153b9f]/70 to-transparent rounded-tl-xl opacity-95" />
+              <div className="pointer-events-none absolute right-0 bottom-0 w-40 h-24 bg-gradient-to-l from-[#153b9f]/60 to-transparent rounded-tl-2xl" />
             </article>
 
-            <article className="relative overflow-hidden rounded-[18px] bg-[#0b0b0c] border border-[#151516] p-5 shadow-[0_6px_18px_rgba(0,0,0,0.6)]">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-md">
-                  <Phone className="text-white" size={18} />
+            <article className="relative overflow-hidden rounded-2xl bg-[#0b0b0c] border border-[#1a1a1c] p-6 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
+              <div className="flex items-start gap-4 relative z-10">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-lg flex-shrink-0">
+                  <Phone className="text-white" size={20} />
                 </div>
                 <div>
-                  <div className="text-sm font-medium">Phone</div>
-                  <div className="text-sm text-white/70 mt-1">
+                  <div className="text-base font-semibold text-white">
+                    Phone
+                  </div>
+                  <div className="text-sm text-white/70 mt-2">
                     +91 87884 41532
                   </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute right-0 bottom-0 w-36 h-20 bg-gradient-to-l from-[#153b9f]/70 to-transparent rounded-tl-xl opacity-95" />
+              <div className="pointer-events-none absolute right-0 bottom-0 w-40 h-24 bg-gradient-to-l from-[#153b9f]/60 to-transparent rounded-tl-2xl" />
             </article>
           </div>
 
           {/* Form card */}
-          <div className="rounded-[20px] bg-[#070708] border border-[#161617] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+          <div className="rounded-2xl bg-[#070708] border border-[#1a1a1c] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm text-white/80 mb-2">
+                  <label className="block text-sm font-medium text-white/90 mb-3">
                     First Name
                   </label>
                   <input
                     name="firstName"
                     value={form.firstName}
                     onChange={handleChange}
-                    className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                    placeholder="Aarav"
+                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-white/80 mb-2">
+                  <label className="block text-sm font-medium text-white/90 mb-3">
                     Last Name
                   </label>
                   <input
                     name="lastName"
                     value={form.lastName}
                     onChange={handleChange}
-                    className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                    placeholder="Kapoor"
+                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm text-white/80 mb-2">
+                  <label className="block text-sm font-medium text-white/90 mb-3">
                     Email
                   </label>
                   <div className="relative">
@@ -133,9 +138,10 @@ export default function ContactPage() {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 pr-12 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                      placeholder="personal@mail.com"
+                      className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 pr-12 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
                     />
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#0b0b0d] p-1 rounded-md border border-[#1f1f1f]">
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#0b0b0d] p-1.5 rounded-md border border-[#1f1f1f]">
                       <svg
                         width="18"
                         height="14"
@@ -163,27 +169,28 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-white/80 mb-2">
+                  <label className="block text-sm font-medium text-white/90 mb-3">
                     Phone
                   </label>
                   <input
                     name="phone"
                     value={form.phone}
                     onChange={handleChange}
-                    className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                    placeholder="+91 87884 41532"
+                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm text-white/80 mb-2">
+                <label className="block text-sm font-medium text-white/90 mb-3">
                   Service of Interest
                 </label>
                 <select
                   name="service"
                   value={form.service}
                   onChange={handleChange}
-                  className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                  className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
                 >
                   <option value="" className="text-white bg-[#0d0d10]">
                     Select a service
@@ -201,22 +208,23 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm text-white/80 mb-2">
+                <label className="block text-sm font-medium text-white/90 mb-3">
                   Message
                 </label>
                 <textarea
                   name="message"
                   value={form.message}
                   onChange={handleChange}
+                  placeholder="Hi, I am Aarav I want help with..."
                   rows={6}
-                  className="w-full rounded-md bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition resize-vertical"
+                  className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition resize-vertical"
                 ></textarea>
               </div>
 
               <div>
                 <button
                   type="submit"
-                  className="w-full h-12 rounded-lg bg-gradient-to-r from-[#2f57b6] to-[#2a55b8] shadow-[0_8px_30px_rgba(47,87,182,0.28)] flex items-center justify-center gap-2 text-white font-medium transition hover:brightness-105"
+                  className="w-full h-12 rounded-lg bg-gradient-to-r from-[#2f57b6] to-[#2a55b8] shadow-[0_8px_30px_rgba(47,87,182,0.3)] flex items-center justify-center gap-2 text-white font-semibold transition hover:shadow-[0_12px_40px_rgba(47,87,182,0.4)]"
                 >
                   <span>Submit Form</span>
                 </button>
