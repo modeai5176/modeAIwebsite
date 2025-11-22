@@ -45,10 +45,10 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#000000] via-[#07080a] to-[#0b0b0d] text-white antialiased">
-      <div className="container mx-auto px-6 lg:px-8 py-20">
+      <div className="container mx-auto px-8 lg:px-8 py-20">
         {/* Top hero/title */}
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-1.5 rounded-full border border-white/20 text-sm mb-6 text-white/80">
+          <div className="inline-block px-6 py-1.5 rounded-full border border-white/20 text-sm mb-6 text-white/80">
             Contact
           </div>
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
@@ -73,7 +73,7 @@ export default function ContactPage() {
                     E-mail
                   </div>
                   <div className="text-sm text-white/70 mt-2">
-                    info@graphsensesolutions.com
+                    admin@mode-ai.co
                   </div>
                 </div>
               </div>
@@ -90,7 +90,10 @@ export default function ContactPage() {
                     Phone
                   </div>
                   <div className="text-sm text-white/70 mt-2">
-                    +91 87884 41532
+                    +91 70835 89845
+                  </div>
+                  <div className="text-sm text-white/70 mt-2">
+                    +1 (780) 908-2320
                   </div>
                 </div>
               </div>
@@ -176,7 +179,7 @@ export default function ContactPage() {
                     name="phone"
                     value={form.phone}
                     onChange={handleChange}
-                    placeholder="+91 87884 41532"
+                    placeholder="+91 98765 00000"
                     className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
                   />
                 </div>
