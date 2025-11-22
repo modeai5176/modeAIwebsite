@@ -47,7 +47,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#000000] via-[#07080a] to-[#0b0b0d] text-white antialiased">
       <div className="container mx-auto px-8 lg:px-8 py-20">
         {/* Top hero/title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 mt-20">
           <div className="inline-block px-6 py-1.5 rounded-full border border-white/20 text-sm mb-6 text-white/80">
             Contact
           </div>
@@ -63,9 +63,9 @@ export default function ContactPage() {
         {/* Info cards */}
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-            <article className="relative overflow-hidden rounded-2xl bg-[#0b0b0c] border border-[#1a1a1c] p-6 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
+            <article className="relative overflow-hidden rounded-2xl bg-[rgba(11,11,12,0.35)] backdrop-blur-md border border-[#1a1a1c] p-6 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
               <div className="flex items-start gap-4 relative z-10">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-lg flex-shrink-0">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-[#1814bc] to-[#2e0a7a] flex items-center justify-center shadow-lg flex-shrink-0">
                   <Mail className="text-white" size={20} />
                 </div>
                 <div>
@@ -77,27 +77,27 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute right-0 bottom-0 w-40 h-24 bg-gradient-to-l from-[#153b9f]/60 to-transparent rounded-tl-2xl" />
+
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#9602db]/40 to-transparent" />
             </article>
 
             <article className="relative overflow-hidden rounded-2xl bg-[#0b0b0c] border border-[#1a1a1c] p-6 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
               <div className="flex items-start gap-4 relative z-10">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-[#3747b6] to-[#1f3fb3] flex items-center justify-center shadow-lg flex-shrink-0">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-[#1814bc] to-[#2e0a7a] flex items-center justify-center shadow-lg flex-shrink-0">
                   <Phone className="text-white" size={20} />
                 </div>
                 <div>
                   <div className="text-base font-semibold text-white">
                     Phone
                   </div>
-                  <div className="text-sm text-white/70 mt-2">
-                    +91 70835 89845
-                  </div>
-                  <div className="text-sm text-white/70 mt-2">
+                  <div className="text-sm text-white/70 mt-2 leading-relaxed">
+                    +91 70835 89845 <br />
                     +1 (780) 908-2320
                   </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute right-0 bottom-0 w-40 h-24 bg-gradient-to-l from-[#153b9f]/60 to-transparent rounded-tl-2xl" />
+
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#9602db]/40 to-transparent" />
             </article>
           </div>
 
@@ -114,7 +114,7 @@ export default function ContactPage() {
                     value={form.firstName}
                     onChange={handleChange}
                     placeholder="Aarav"
-                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#9602db] transition"
                   />
                 </div>
                 <div>
@@ -126,7 +126,7 @@ export default function ContactPage() {
                     value={form.lastName}
                     onChange={handleChange}
                     placeholder="Kapoor"
-                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#9602db] transition"
                   />
                 </div>
               </div>
@@ -142,7 +142,7 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="personal@mail.com"
-                      className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 pr-12 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                      className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 pr-12 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#9602db] transition"
                     />
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#0b0b0d] p-1.5 rounded-md border border-[#1f1f1f]">
                       <svg
@@ -180,7 +180,7 @@ export default function ContactPage() {
                     value={form.phone}
                     onChange={handleChange}
                     placeholder="+91 98765 00000"
-                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                    className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#9602db] transition"
                   />
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function ContactPage() {
                   name="service"
                   value={form.service}
                   onChange={handleChange}
-                  className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition"
+                  className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#9602db] transition"
                 >
                   <option value="" className="text-white bg-[#0d0d10]">
                     Select a service
@@ -220,14 +220,14 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="Hi, I am Aarav I want help with..."
                   rows={6}
-                  className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#2f57b6] transition resize-vertical"
+                  className="w-full rounded-lg bg-[#0d0d10] border border-[#1f1f1f] px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#9602db] transition resize-vertical"
                 ></textarea>
               </div>
 
               <div>
                 <button
                   type="submit"
-                  className="w-full h-12 rounded-lg bg-gradient-to-r from-[#2f57b6] to-[#2a55b8] shadow-[0_8px_30px_rgba(47,87,182,0.3)] flex items-center justify-center gap-2 text-white font-semibold transition hover:shadow-[0_12px_40px_rgba(47,87,182,0.4)]"
+                  className="w-full h-12 rounded-lg bg-gradient-to-r from-[#9602db] to-[#2a55b8] shadow-[0_8px_30px_rgba(47,87,182,0.3)] flex items-center justify-center gap-2 text-white font-semibold transition hover:shadow-[0_12px_40px_rgba(47,87,182,0.4)]"
                 >
                   <span>Submit Form</span>
                 </button>
